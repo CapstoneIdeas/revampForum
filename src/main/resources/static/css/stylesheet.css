@@ -1,0 +1,90 @@
+html {
+    min-height: 100vh;
+    background-color: slategrey;
+}
+table {
+    border: 1px solid black;
+}
+th {
+   border-bottom: 3px solid black;
+}
+td {
+    border-right: 1px solid red;
+    border-left: 1px solid red;
+    border-bottom: 0.5px solid black;
+}
+nav a {
+    padding: 15px;
+}
+.loader {
+    text-align: center;
+    margin-top: 15%;
+    margin-bottom: 20%;
+    /*background-color: mediumpurple;*/
+}
+
+.loader p {
+    display: inline-block;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 6em;
+    font-weight: 600;
+    transform: scale(.5);
+    color: #121212;
+    -webkit-text-stroke: 1px gray;
+}
+
+.loader  p:nth-child(1) {
+    animation: hover 2.5s linear infinite;
+}
+
+.loader  p:nth-child(2) {
+    animation: hover 2.5s linear infinite .125s;
+}
+
+.loader  p:nth-child(3) {
+    animation: hover 2.5s linear infinite .25s;
+}
+
+.loader  p:nth-child(4) {
+    animation: hover 2.5s linear infinite .375s;
+}
+
+.loader p:nth-child(5) {
+    animation: hover 2.5s linear infinite .5s;
+}
+
+.loader  p:nth-child(6) {
+    animation: hover 2.5s linear infinite .675s;
+}
+
+.loader  p:nth-child(7) {
+    animation: hover 2.5s linear infinite .75s;
+}
+@keyframes hover {
+    0% {
+        transform: scale(.5);
+        color: #121212;
+        -webkit-text-stroke: 2px gray;
+    }
+
+    20% {
+        transform: scale(1);
+        color: hotpink;
+        -webkit-text-stroke: 3px red;
+        filter: drop-shadow(0 0 1px black)drop-shadow(0 0 1px black)drop-shadow(0 0 3px red)drop-shadow(0 0 5px red)hue-rotate(10turn);
+    }
+
+    50% {
+        transform: scale(.5);
+        color: #121212;
+        -webkit-text-stroke: 2px gray;
+    }
+}
+footer {
+    text-align: center;
+    position: absolute;
+    width: 95%;
+    min-height: 15px;
+    bottom: 0;
+}
