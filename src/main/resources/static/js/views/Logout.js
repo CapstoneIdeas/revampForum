@@ -1,7 +1,8 @@
 import createView from "../createView.js";
 export default function Logout(props) {
     console.log("Logging out...");
-    return `  <div class="loader">
+    return `  
+  <div class="loader">
     <p>l</p>
     <p>o</p>
     <p>g</p>
@@ -9,16 +10,15 @@ export default function Logout(props) {
     <p>i</p>
     <p>n</p>
     <p>g</p>
-    </div>
+  </div>
     <br>    
-    <p>o</p>
-    <p>u</p>
-    <p>t</p>`
+    <h1>Out</h1>`
 ;
 }
 export function LogoutEvents() {
     window.setTimeout( function () {
-    window.localStorage.removeItem("access_token");
-    window.localStorage.removeItem("refresh_token");
-    createView("/login");},5000)
+    window.localStorage?.removeItem("access_token");
+    window.localStorage?.removeItem("user");
+    window.localStorage?.removeItem("refresh_token");
+    createView("/");},10)
 }

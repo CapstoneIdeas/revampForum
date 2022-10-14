@@ -2,25 +2,6 @@ import CreateView from "../createView.js"
 export default function prepareUserHTML(props) {
     return `
         <h1>User Info</h1>
-        <h2>${props?.userName}</h2>
-        <h2>${props?.email}</h2>
-        
-        <form>
-            <label for="oldpassword">Please enter your current password</label>
-            <input type="password" id="oldpassword" name="oldpassword">
-            <br>
-            <label for="newpassword">New password</label>
-            <input type="password" id="newpassword" name="newpassword">
-            <br>
-            <label for="confirmpassword">Confirm new password</label>
-            <input type="password" id="confirmpassword" name="confirmpassword">
-            
-            <br>
-            <button id="toggleShowPassword" name="toggleShowPassword">Show Password?</button>
-            <button id="updatePassword" name="updatePassword">Save New Password</button>
-        </form>
-        
-        <hr>
         
     `;
 }
