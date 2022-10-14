@@ -58,6 +58,7 @@ public class AuthBuddy {
         RestTemplate restTemplate = new RestTemplate();
 
         String uri = "https://people.googleapis.com/v1/people/me?personFields=names,emailAddresses,photos&access_token=" + accessToken;
+        System.out.println(uri);
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
         HttpEntity<String> entity = new HttpEntity<>("parameters", headers);

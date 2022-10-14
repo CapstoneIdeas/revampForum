@@ -6,12 +6,13 @@ import com.revamp.forum.data.User;
 import com.revamp.forum.repositories.CategoriesRepository;
 import com.revamp.forum.repositories.PostsRepository;
 import com.revamp.forum.repositories.UsersRepository;
+import com.revamp.forum.services.AuthBuddy;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,6 +20,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping(value = "/api/posts", produces = "application/json")
 public class PostsController {
+    private AuthBuddy authBuddy;
     private PostsRepository postsRepository;
     private UsersRepository usersRepository;
     private CategoriesRepository categoriesRepository;
@@ -35,14 +37,12 @@ public class PostsController {
         return optionalPost;
     }
     @PostMapping("")
-    public void createPost(@RequestBody Post newPost) {
-        User author = usersRepository.findById(1L).get();
+    public void createPost(@RequestBody Post newPost, @RequestHeader(value = HttpHeaders.AUTHORIZATION, required = false) String authHeader) {
+        User author = authBuddy.getUserFromAuthHeader(authHeader);
+        if(author == null) {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Unauthorized");
+        }
         newPost.setAuthor(author);
-        newPost.setCategories(new ArrayList<>());
-        Category cat1 = categoriesRepository.findById(1L).get();
-        Category cat2 = categoriesRepository.findById(2L).get();
-        newPost.getCategories().add(cat1);
-        newPost.getCategories().add(cat2);
         postsRepository.save(newPost);
     }
     @DeleteMapping("/{id}")
