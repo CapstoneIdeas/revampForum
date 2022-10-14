@@ -1,7 +1,7 @@
 package com.revamp.forum.data;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
@@ -23,6 +23,8 @@ public class User {
     @ToString.Exclude
     @Column(nullable = false, length = 100)
     private String password;
+    @Column(nullable = false, unique = true, length = 256)
+    private String email;
     @Column
     private LocalDate createdAt;
     @NotNull

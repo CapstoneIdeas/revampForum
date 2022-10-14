@@ -5,6 +5,45 @@ import {showNotification} from "./messaging.js";
  * Adds a login event to allow the user to initially obtain a new OAuth2.0 token
  * On a successful response, sets the tokens into storage and redirects to the root
  */
+export function setLoggedInUserInfo() {
+    const request = {
+        method: "GET",
+        headers: getHeaders()
+    }
+    const url = BACKEND_HOST_URl + "/api/users/authinfo";
+    fetch(url, request)
+        .then(function(response) {
+            return response.json();
+        }).then(function(data) {
+        window.localStorage.setItem("user", JSON.stringify(data));
+    });
+}
+
+export function checkForLoginTokens(url) {
+    // console.log(url);
+    // access_token is given back from spring after #
+    let parts = url.split("#");
+    if(parts.length < 2)
+        return false;
+
+    parts = parts[1].split("&");
+    let tokens = [];
+    tokens['access_token'] = "";
+    for (let i = 0; i < parts.length; i++) {
+        const pair = parts[i].split("=");
+        console.log(pair);
+        if(pair.length > 1 && (pair[0] === "access_token" || pair[0] === "refresh_token"))
+            tokens[pair[0]] = pair[1];
+    }
+    console.log(tokens['access_token']);
+    // console.log(tokens);
+    if(tokens['access_token'] === "")
+        return false;
+
+    setTokens(tokens);
+    return true;
+}
+
 export default function addLoginEvent() {
     console.log("entered addLoginEvent")
     document.querySelector("#login-btn").addEventListener("click", function () {
@@ -61,12 +100,12 @@ export function getHeaders() {
  * @param responseData
  */
 function setTokens(responseData) {
-    if (responseData.route['access_token']) {
-        localStorage.setItem("access_token", responseData.route['access_token']);
+    if (responseData['access_token']) {
+        localStorage.setItem("access_token", responseData['access_token']);
         console.log("Access token set");
     }
-    if (responseData.route['refresh_token']) {
-        localStorage.setItem("refresh_token", responseData.route['refresh_token']);
+    if (responseData['refresh_token']) {
+        localStorage.setItem("refresh_token", responseData['refresh_token']);
         console.log("Refresh token set")
     }
 }
@@ -79,31 +118,38 @@ export function isLoggedIn() {
 }
 
 //  returns an object with user_name and authority from the access_token
+// export function getUser() {
+//     const accessToken = localStorage.getItem("access_token");
+//     if(!accessToken) {
+//         return false;
+//     }
+//     const parts = accessToken.split('.');
+//     const payload = parts[1];
+//     const decodedPayload = atob(payload);
+//     const payloadObject = JSON.parse(decodedPayload);
+//     return {
+//         userName: payloadObject.user_name,
+//         role: payloadObject.authorities[0]
+//     };
+// }
+//
+// export function getUserRole() {
+//     const accessToken = localStorage.getItem("access_token");
+//     if(!accessToken) {
+//         return false;
+//     }
+//     const parts = accessToken.split('.');
+//     const payload = parts[1];
+//     const decodedPayload = atob(payload);
+//     const payloadObject = JSON.parse(decodedPayload);
+//     return payloadObject.authorities[0];
+// }
 export function getUser() {
     const accessToken = localStorage.getItem("access_token");
     if(!accessToken) {
         return false;
     }
-    const parts = accessToken.split('.');
-    const payload = parts[1];
-    const decodedPayload = atob(payload);
-    const payloadObject = JSON.parse(decodedPayload);
-    return {
-        userName: payloadObject.user_name,
-        role: payloadObject.authorities[0]
-    };
-}
-
-export function getUserRole() {
-    const accessToken = localStorage.getItem("access_token");
-    if(!accessToken) {
-        return false;
-    }
-    const parts = accessToken.split('.');
-    const payload = parts[1];
-    const decodedPayload = atob(payload);
-    const payloadObject = JSON.parse(decodedPayload);
-    return payloadObject.authorities[0];
+    return JSON.parse(window.localStorage.getItem("user"));
 }
 
 export async function removeStaleTokens() {
@@ -115,7 +161,7 @@ export async function removeStaleTokens() {
         method: 'GET',
         headers: getHeaders()
     };
-    await fetch(`/api/users/me`, request)
+    await fetch(`/api/users/authinfo`, request)
         .then((response) => {
             // if fetch error then you might be using stale tokens
             if (response.status === 401) {
