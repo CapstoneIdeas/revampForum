@@ -14,7 +14,7 @@
     <name>forum</name>
     <description>forum</description>
     <properties>
-        <java.version>19</java.version>
+        <java.version>18</java.version>
         <repackage.classifier/>
         <spring-native.version>0.12.1</spring-native.version>
     </properties>
@@ -113,7 +113,7 @@
                     </image>
                 </configuration>
             </plugin>
-            <plugin>
+            <!-- <plugin>
                 <groupId>org.springframework.experimental</groupId>
                 <artifactId>spring-aot-maven-plugin</artifactId>
                 <version>${spring-native.version}</version>
@@ -131,7 +131,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin> -->
             <plugin>
                 <groupId>org.hibernate.orm.tooling</groupId>
                 <artifactId>hibernate-enhance-maven-plugin</artifactId>
