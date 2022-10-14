@@ -2,8 +2,8 @@ import Home, {HomeEvents} from "./views/Home.js";
 import About, {AboutEvents} from "./views/About.js";
 import Error404 from "./views/Error404.js";
 import Loading from "./views/Loading.js";
-import Login from "./views/Login.js";
-import LoginEvent from "./auth.js";
+import Login, {LoginEvents} from "./views/Login.js";
+// import LoginEvent from "./auth.js";
 import Register, {RegisterEvent} from "./views/Register.js"
 import Logout, {LogoutEvents} from "./views/Logout.js";
 import PostIndex, {postSetup} from "./views/PostIndex.js";
@@ -34,7 +34,7 @@ export default function router(URI) {
             state: {},
             uri: '/login',
             title: "Login",
-            viewEvent: LoginEvent
+            viewEvent: LoginEvents
         },
         '/register': {
             returnView: Register,

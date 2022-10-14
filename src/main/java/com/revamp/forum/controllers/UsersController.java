@@ -6,11 +6,12 @@ import com.revamp.forum.data.User;
 import com.revamp.forum.data.UserRole;
 import com.revamp.forum.dto.UserFetchDTO;
 import com.revamp.forum.repositories.UsersRepository;
+import com.revamp.forum.services.AuthBuddy;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.oauth2.provider.OAuth2Authentication;
+//import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import java.time.LocalDate;
@@ -22,7 +23,8 @@ import java.util.Optional;
     @RequestMapping(value = "/api/users", produces = "application/json")
     public class UsersController {
         private UsersRepository usersRepository;
-        private PasswordEncoder passwordEncoder;
+//        private PasswordEncoder passwordEncoder;
+        private AuthBuddy authBuddy;
 //        @GetMapping("")
 //        public List<User> fetchUsers() {
 //            return usersRepository.findAll();
@@ -47,21 +49,29 @@ import java.util.Optional;
             }
             return userDTOs;
         }
+        @GetMapping("/authinfo")
+        private UserFetchDTO getUserAuthInfo(@RequestHeader(value = HttpHeaders.AUTHORIZATION, required = false) String authHeader) {
+            User loggedInUser = authBuddy.getUserFromAuthHeader(authHeader);
+
+            // use email to lookup the user's info
+            UserFetchDTO userDTO = new UserFetchDTO();
+//            userDTO.setEmail(loggedInUser.getEmail());
+//            userDTO.setRole(loggedInUser.getRole());
+            userDTO.setUserName(loggedInUser.getUserName());
+//            userDTO.setProfilePic(loggedInUser.getProfilePic());
+            return userDTO;
+        }
         @GetMapping("/me")
-        private Optional<User> fetchMe(OAuth2Authentication auth) {
-            if(auth ==  null) {
-                throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Please login");
-            }
-            String userName = auth.getName();
-            User user = usersRepository.findByUserName(userName);
-            return Optional.of(user);
+        private User fetchMe(@RequestHeader(value = HttpHeaders.AUTHORIZATION, required = false) String authHeader) {
+            User loggedInUser = authBuddy.getUserFromAuthHeader(authHeader);
+            return loggedInUser;
         }
         @PostMapping("/create")
         public void createUser(@RequestBody User newUser) {
             newUser.setRole(UserRole.USER);
-            String plaintextPassword = newUser.getPassword();
-            String encryptedPassword = passwordEncoder.encode(plaintextPassword);
-            newUser.setPassword(encryptedPassword);
+//            String plaintextPassword = newUser.getPassword();
+//            String encryptedPassword = passwordEncoder.encode(plaintextPassword);
+//            newUser.setPassword(encryptedPassword);
             newUser.setCreatedAt(LocalDate.now());
             usersRepository.save(newUser);
         }

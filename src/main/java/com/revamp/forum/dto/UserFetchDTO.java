@@ -14,4 +14,5 @@ import lombok.*;
 public class UserFetchDTO {
     private Long id;
     private String userName;
+    // set PFP TBD
 }
