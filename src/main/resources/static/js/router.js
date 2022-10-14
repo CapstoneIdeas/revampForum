@@ -62,12 +62,12 @@ export default function router(URI) {
             uri: location.pathname,
             title: 'Loading...',
         },
-        '/me': {
+        '/user': {
             returnView: prepareUserHTML,
             state: {
                 me: '/api/users/me'
             },
-            uri: '/me',
+            uri: '/user',
             title: 'User Info',
             viewEvent: prepareUserJS
         },

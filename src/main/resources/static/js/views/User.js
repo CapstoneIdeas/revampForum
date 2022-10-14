@@ -5,30 +5,33 @@ export default function prepareUserHTML(props) {
         
     `;
 }
-// function createPostHTML(user) {
-//     let html = `
-//         <table class="table">
-//         <thead>
-//         <tr>
-//             <th scope="col">Title</th>
-//             <th scope="col">Content</th>
-//         </tr>
-//         </thead>
-//         <tbody>
-//     `;
-//     for (let i = 0; i < user.posts.length; i++) {
-//         const post = user.posts[i];
-//         html += `<tr>
-//             <td>${post.title}</td>
-//             <td>${post.content}</td>
-//             </tr>`;
-//     }
-//     html += `
-//         </tbody>
-//         </table>`;
-//     return html;
-// }
-export function prepareUserJS() {
+function createPostHTML(user) {
+    let html = `
+        <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Content</th>
+        </tr>
+        </thead>
+        <tbody>
+    `;
+    for (let i = 0; i < user.posts.length; i++) {
+        const post = user.posts[i];
+        html += `<tr>
+            <td>${post.title}</td>
+            <td>${post.content}</td>
+            </tr>`;
+    }
+    html += `
+        </tbody>
+        </table>`;
+    return html;
+}
+
+
+// PASSWORD HANDLER PRIOR TO GOOGLE LOGIN
+// export function prepareUserJS() {
 //     doTogglePasswordHandler();
 //     doSavePasswordHandler();
 // }
@@ -67,4 +70,4 @@ export function prepareUserJS() {
 //             newPassword.setAttribute("type", "password");
 //         }
 //     });
-}
+// }

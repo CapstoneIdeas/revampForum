@@ -9,11 +9,10 @@ export default function Navbar(props) {
     if(loggedIn) {
         html += `
             <a class="jalopy-nav" href="/posts" data-link>Posts</a>
-            <a class="jalopy-nav" href="/logout" data-link>Logout</a>
-            <a class="jalopy-nav" href="/users" id="user" data-link>User Info</a>`;
+            <a class="jalopy-nav" href="/user" id="user" data-link>User</a>
+            <a class="jalopy-nav" href="/logout" data-link>Logout</a>`;
     } else {
-        html += `<a class="jalopy-nav" href="/login" data-link>Login</a>
-                <a class="jalopy-nav" href="/register" data-link>Register</a>`;
+        html += `<a class="jalopy-nav" href="/login" data-link>Login</a>`;
     }
     html += ` </nav>`;
         return html;
