@@ -88,3 +88,89 @@ footer {
     min-height: 15px;
     bottom: 0;
 }
+
+/*-----------------------------------------------------------------*/
+
+.post-feature {
+    padding: 24px;
+    background-color: rgba(245, 245, 245, 0.5);
+    -webkit-transition: 0.1s all linear;
+    transition: 0.1s all linear;
+}
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.post-feature span.fs-6 {
+    font-family: "Poppins", sans-serif;
+    padding-left: 32px;
+    color: #272343;
+}
+
+.has-line {
+    position: relative;
+}
+
+@media (max-width: 420px)
+    .fs-6 {
+        font-size: 14px !important;
+    }
+
+    .has-line::after {
+        position: absolute;
+        content: '';
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        left: 0;
+        background-color: #FB743E;
+        height: 2px;
+        width: 24px;
+    }
+
+
+    *, ::after, ::before {
+        box-sizing: border-box;
+    }
+
+    .post-feature:hover {
+        background-color: #FB743E;
+    }
+
+    .post-feature:hover .dot,
+    .post-feature:hover .has-line::after {
+        background-color: white;
+    }
+
+    .post-feature:hover .btn-link svg,
+    .post-feature:hover .btn-link,
+    .post-feature:hover span,
+    .post-feature:hover h6 a,
+    .post-feature:hover span.fs-6 {
+        color: white;
+    }
+    .featured-category-item a:hover {
+        background-color: #FB743E;
+        color: white;
+    }
+    .all-tags-list a:hover {
+        background-color: #FB743E;
+        color: white;
+    }
+    .slick-prev:hover::before {
+        color: white;
+    }
+
+    .slick-next:hover::before {
+        color: white;
+    }
+
+    .slick-prev:hover,
+    .slick-prev:focus,
+    .slick-next:hover,
+    .slick-next:focus {
+        background-color: #FB743E;
+    }

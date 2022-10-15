@@ -6,37 +6,41 @@ export default function PostIndex(props) {
    const postsHTML = generatePostsHTML(props.posts);
     posts = props.posts
     return `
-    <header>
-     <h1>Posts Page</h1>
-    </header>
-    <main>
-     <h3>List of posts</h3>
-     <div>
-        ${postsHTML}
-     </div>
-     <br>
-     <h3>add a post</h3>
-     <form action="">
-      <label for="title">Title</label><br>
-      <input id="title" name="title" type="text" placeholder="Enter title for post">
-      <br>
-      <label for="content">Content</label><br>
-      <textarea name="content" id="content" cols="50" rows="10" placeholder="Enter content"></textarea>
-      <button id="addPost" name="addPost">Add post</button>
-      </form>
-     </main>
+       <header>
+            <h1>Posts Page</h1>
+            
+             <div id="searchWrapper">
+                <input
+                    type="text"
+                    name="searchBar"
+                    id="searchBar"
+                    placeholder="search for a character"
+                />
+            </div>
+
+        </header>
+        <main>
+   
+              <h3>Lists of posts</h3>
+            <div>
+                ${postsHTML}   
+            </div>
+            
+          
+            
+        </main>
 `;
 }
 function generatePostsHTML(posts) {
     let postsHTML = `
-        <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">Title</th>
-            <th scope="col" colspan="3">Content</th>
-        </tr>
-        </thead>
-        <tbody>
+<!--        <table class="table">-->
+<!--        <thead>-->
+<!--        <tr>-->
+<!--            <th scope="col">Title</th>-->
+<!--            <th scope="col" colspan="3">Content</th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
     `;
     for (let i = 0; i < posts.length; i++) {
         const post = posts[i];
@@ -47,101 +51,66 @@ function generatePostsHTML(posts) {
             }
             categories += post.categories[j].name;
         }
+        // <div className="card" id="divcard" style="width: 18rem;">
+        //     <div className="card-body">
+        //         <h5 className="card-title">${post?.title}</h5>
+        //         <p className="card-text">${post?.content}</p>
+        //         <li>${categories}</li>
+        //         <li data-user-id=${post?.author?.id}>${post?.author?.userName}</li>
+        //         <a href="#" className="btn btn-primary">Read More</a>
+        //
+        //
+        //     </div>
+        postsHTML += `
+              
+          </div>
+          <div class="card" id="divcard" style="width: 18rem;">
+               <div class="post-feature">
+                        <span class="fs-6 has-line">Travels</span>
+                        <h6><a href="details.html">${post?.title.toUpperCase()}</a></h6>
+                        <div class="blog-item-info-release">
+                            <span>March 25, 2021</span> <span class="dot"></span> <span>4 min read</span>
+                        </div>
+                        <a href="details.html" class="btn btn-link">Read Article
+                            <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12.5 1.5L17 6M17 6L12.5 10.5M17 6H1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </a>
+                    </div> 
+                <div>
 
-        postsHTML += `<tr>
-            <td>${post?.title}</td>
-            <td>${post?.content}</td>
-            <td>${categories}</td>
-            <td data-user-id=${post?.author?.id}>${post?.author?.userName}</td>
-            <td><button data-id=${post.id} class="button btn-primary editPost">Edit</button></td>
-            <td><button data-id=${post.id} class="button btn-danger deletePost">Delete</button></td>
-            </tr>`;
+`;
     }
     postsHTML += `</tbody></table>`;
     return postsHTML;
 }
-function addPostHandler(){
-    const addButton = document.querySelector("#addPost")
-    addButton.addEventListener("click", function (event) {
-        const titleField =  document.querySelector("#title");
-        const contentField = document.querySelector("#content");
-        if(isLoggedIn()){
-        if((titleField.value === "") || (contentField.value === "")) {
-            console.log("needs more data");
-        }
-        else {
-            let newPost = {
-                title: titleField.value,
-                content: contentField.value,
-            }
-            console.log(newPost);
-            let request = {
-                method: "POST",
-                headers: getHeaders(),
-                body: JSON.stringify(newPost)
-            }
-            fetch("http://localhost:8080/api/posts", request)
-                .then(response => {
-                    console.log(response.status);
-                    createView("/posts");
-                })
-        }}
-        else{
-            console.log("Must Be logged in");
-        }
-    })}
-function editPostHandlers() {
-    const editButtons = document.querySelectorAll(".editPost");
-    const titleField =  document.querySelector("#title");
-    const contentField = document.querySelector("#content");
-    for (let i = 0; i < editButtons.length; i++) {
-        editButtons[i].addEventListener("click", function(event) {
-            console.log(editButtons[i].getAttribute("data-id") + "will be edited");
-            if(isLoggedIn()){
-            if((titleField.value === "") || (contentField.value === "")) {
-                console.log("needs more data");
-            }
-            else{
-            let editPost = {
-                title: titleField.value,
-                content: contentField.value,
-            }
-            let request = {
-                method: "PUT",
-                headers: getHeaders(),
-                body: JSON.stringify(editPost)
-            }
-            let url = `http://localhost:8080/api/posts/${editButtons[i].getAttribute("data-id")}`;
-            fetch(url, request).then(response => response.json());
-            location.reload();
-        }}
-        else{
-            console.log("Must Be logged in");
-        }});
-    }
-}
-function deletePostHandlers() {
-    const deleteButtons = document.querySelectorAll(".deletePost");
-    for (let i = 0; i < deleteButtons.length; i++) {
-        deleteButtons[i].addEventListener("click", function (event) {
-            if (isLoggedIn()){
-            console.log(deleteButtons[i].getAttribute("data-id") + "will be deleted");
-            let request = {
-                method: "DELETE",
-                headers: getHeaders(),
-            }
-            let url = `http://localhost:8080/api/posts/${deleteButtons[i].getAttribute("data-id")}`
-            fetch(url, request).then(response => response.json());
-            location.reload();
 
-        }
-    else{
-            console.log("Must Be logged in");
-        }});
-    }
+function search() {
+    const divcards = document.querySelectorAll('.card')
+    console.log(divcards)
+
+    const searchBar = document.getElementById('searchBar');
+    searchBar.addEventListener('keyup', function (event){
+        // console.log(event.key)
+        const keylogger = searchBar.value.toLowerCase();
+        console.log(keylogger)
+
+        divcards.forEach((divcard) => {
+            console.log(divcard.firstElementChild.firstElementChild.firstElementChild);
+            let content = divcard.firstElementChild.firstElementChild.firstElementChild.firstElementChild.innerText;
+            console.log(content);
+            if(content.toLowerCase().startsWith(keylogger)) {
+                divcard.style.display = "block";
+            } else {
+                divcard.style.display = "none";
+            }
+
+        });
+
+
+    });
 }
     export function postSetup() {
-        addPostHandler();
-        editPostHandlers();
-        deletePostHandlers();
+
+        search();
     }
