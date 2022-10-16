@@ -65,11 +65,11 @@ export default function router(URI) {
         '/user': {
             returnView: prepareUserHTML,
             state: {
-                me: '/api/users/me'
+                me: '/api/users'
             },
             uri: '/user',
             title: 'User Info',
-            viewEvent: prepareUserJS
+            viewEvent: postSetup
         },
         '/posts': {
             returnView: PostIndex,

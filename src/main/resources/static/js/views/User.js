@@ -7,22 +7,25 @@ export default function prepareUserHTML(props) {
     posts = props.posts
     return `
     <header>
+        <h2>User Blog</h2>
     </header>
     <main>
         <div class= 'userContainer'>
             <div class= 'userLeftDiv'>
                 <div class= 'userInfoDiv'></div>
                 <div class= 'newPostDiv'>
+                    <h3>New Blog Entry: </h3>
                     <form action="">
                         <label for="title">Title</label><br>
-                        <input id="title" name="title" type="text" placeholder="Enter blog title"><br>
+                        <input id="title" name="title" type="text" placeholder="Enter a title..."><br>
                         <label for="content">Content</label><br>
-                        <textarea name="content" id="content" cols="50" rows="10" placeholder="Enter blog content"></textarea>
+                        <textarea name="content" id="content" cols="50" rows="10" placeholder="Enter some content..."></textarea>
                         <button id="addPost" name="addPost">Add blog</button>
                     </form>
                 </div>
             </div>
             <div class= 'userRightDiv'>
+                <h3>Blog History</h3>
                 <div class= 'userPostHistory'> ${postsHTML} </div>
             </div>
         </div>
@@ -30,6 +33,7 @@ export default function prepareUserHTML(props) {
     `;
 }
 
+//  GENERATE TABLE OF POSTS WITH EDIT AND DELETE OPTION
 function generatePostsHTML(posts) {
     let postsHTML = `
         <table class="table">
@@ -50,7 +54,6 @@ function generatePostsHTML(posts) {
             }
             categories += post.categories[j].name;
         }
-
         postsHTML += `<tr>
             <td>${post?.title}</td>
             <td>${post?.content}</td>
@@ -64,6 +67,14 @@ function generatePostsHTML(posts) {
     return postsHTML;
 }
 
+// EXPORT FUNCTION FOR CRUD METHODS
+export function postSetup() {
+    addPostHandler();
+    editPostHandlers();
+    deletePostHandlers();
+}
+
+// CREATE A BLOG POST
 function addPostHandler(){
     const addButton = document.querySelector("#addPost")
     addButton.addEventListener("click", function (event) {
@@ -84,16 +95,19 @@ function addPostHandler(){
                 headers: getHeaders(),
                 body: JSON.stringify(newPost)
             }
-            fetch("http://localhost:8080/api/posts", request)
+            fetch("http://localhost:8080/api/user", request)
                 .then(response => {
                     console.log(response.status);
-                    createView("/posts");
+                    createView("/user");
                 })
         }}
         else{
             console.log("Login required");
         }
-    })}
+    })
+}  
+
+// UPDATE A BLOG POST
 function editPostHandlers() {
     const editButtons = document.querySelectorAll(".editPost");
     const titleField =  document.querySelector("#title");
@@ -115,7 +129,7 @@ function editPostHandlers() {
                 headers: getHeaders(),
                 body: JSON.stringify(editPost)
             }
-            let url = `http://localhost:8080/api/posts/${editButtons[i].getAttribute("data-id")}`;
+            let url = `http://localhost:8080/api/user/${editButtons[i].getAttribute("data-id")}`;
             fetch(url, request).then(response => response.json());
             location.reload();
         }}
@@ -124,6 +138,8 @@ function editPostHandlers() {
         }});
     }
 }
+
+// DELETE A BLOG POST
 function deletePostHandlers() {
     const deleteButtons = document.querySelectorAll(".deletePost");
     for (let i = 0; i < deleteButtons.length; i++) {
@@ -134,7 +150,7 @@ function deletePostHandlers() {
                 method: "DELETE",
                 headers: getHeaders(),
             }
-            let url = `http://localhost:8080/api/posts/${deleteButtons[i].getAttribute("data-id")}`
+            let url = `http://localhost:8080/api/user/${deleteButtons[i].getAttribute("data-id")}`
             fetch(url, request).then(response => response.json());
             location.reload();
 
