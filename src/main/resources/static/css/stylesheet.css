@@ -201,7 +201,10 @@ footer {
 /*    }*/
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bree+Serif&family=EB+Garamond:ital,wght@0,500;1,800&display=swap');
 
-
+.row{
+    box-shadow: 0 15px 30px 1px grey;
+    background: rgba(255, 255, 255, 0.90);
+}
 body {
     background: #DFC2F2;
     background-image: linear-gradient( to right, #ffffb3,#ffe6e6);
@@ -211,8 +214,7 @@ body {
 }
 
 #container{
-    box-shadow: 0 15px 30px 1px grey;
-    background: rgba(255, 255, 255, 0.90);
+
     text-align: center;
     border-radius: 5px;
     overflow: hidden;
