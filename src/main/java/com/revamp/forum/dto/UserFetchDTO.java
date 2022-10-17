@@ -1,6 +1,7 @@
 package com.revamp.forum.dto;
 
 
+import com.revamp.forum.data.UserRole;
 import lombok.*;
 
 @NoArgsConstructor
@@ -14,5 +15,7 @@ import lombok.*;
 public class UserFetchDTO {
     private Long id;
     private String userName;
-    // set PFP TBD
+    private String email;
+    private UserRole role;
+    private String profilePic;
 }
