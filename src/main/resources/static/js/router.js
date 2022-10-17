@@ -4,7 +4,6 @@ import Error404 from "./views/Error404.js";
 import Loading from "./views/Loading.js";
 import Login, {LoginEvents} from "./views/Login.js";
 // import LoginEvent from "./auth.js";
-import Register, {RegisterEvent} from "./views/Register.js"
 import Logout, {LogoutEvents} from "./views/Logout.js";
 import PostIndex, {postSetup} from "./views/PostIndex.js";
 import prepareUserHTML, {blogSetup} from "./views/User.js"
@@ -36,13 +35,6 @@ export default function router(URI) {
             title: 'Logout',
             viewEvent: LogoutEvents
         },
-        // '/register': {
-        //     returnView: Register,
-        //     state: {},
-        //     uri: '/register',
-        //     title: 'Register',
-        //     viewEvent: RegisterEvent
-        // },
         '/about': {
             returnView: About,
             state: {},
@@ -53,7 +45,7 @@ export default function router(URI) {
         '/user': {
             returnView: prepareUserHTML,
             state: {
-                me: '/api/user'
+                user: '/api/user'
             },
             uri: '/user',
             title: 'User Info',

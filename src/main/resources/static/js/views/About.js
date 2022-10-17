@@ -53,7 +53,7 @@ export default function About(props) {
                         <div class="responsive-cell-block wk-mobile-12 wk-ipadp-10 wk-tab-8 wk-desk-6 card-container">
                             <div class="card">
                                 <div class="img-box">
-                                    <img src="../assets/ben1.jpg"class="person-img" />
+                                    <img src="../assets/ben2.jpg"class="person-img" />
                                 </div>
                                 <div class="card-content-box">
                                     <p class="text-blk person-name">Ben</p>
