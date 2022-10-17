@@ -12,18 +12,32 @@ export default function prepareUserHTML(props) {
     <main>
         <div class= 'userContainer'>
             <div class= 'userLeftDiv'>
-                <div class= 'userInfoDiv'>
-                    
-                </div>
+                <div class= 'userInfoDiv'></div>
                 <div class= 'newPostDiv'>
-                    <h3>New Blog Entry: </h3>
-                    <form action="">
-                        <label for="title">Title</label><br>
-                        <input id="title" name="title" type="text" placeholder="Enter a title..."><br>
-                        <label for="content">Content</label><br>
-                        <textarea name="content" id="content" cols="50" rows="10" placeholder="Enter some content..."></textarea>
-                        <button id="addPost" name="addPost">Add blog</button>
-                    </form>
+                    <form>
+                    <h2>+ New Blog</h2>
+                    <div class="large-group">
+                        <div class="small-group">
+                            <label for="title">Title</label>
+                            <input id="title" type="text" name="title" placeholder="Enter a subject..."/>
+                        </div>
+                        <div class="small-group">
+                            <label for="category">Category</label>
+                            <select name="category">
+                                <option value="dataScience">Data Science</option>
+                                <option value="generativeArt">Generative Art</option>
+                                <option value="languages">Languages</option>
+                                <option value="uiUxDesign">UI/UX Dedign</option>
+                                <option value="webDevelopment">Web Development</option>
+                            </select>
+                        </div>
+                        <div class="textarea-div">
+                            <label for="content">Content</label>
+                            <textarea id="content" type="text" name="content" placeholder="Enter some subject matter..."></textarea>
+                        </div>
+                            <input id="addPost" class="btn" type="submit" name="addPost"/>
+                    </div>
+                </form>
                 </div>
             </div>
             <div class= 'userRightDiv'>
@@ -46,11 +60,7 @@ function generatePostsHTML(posts) {
         </tr>
         </thead>
         <tbody>
-    `;
-
-    // CHECK(LOG) POSTS
-    // console.log(posts);
-
+    `;    
     if(posts) {
         for (let i = 0; i < posts.length; i++) {
             const post = posts[i];
@@ -61,14 +71,16 @@ function generatePostsHTML(posts) {
                 }
                 categories += post.categories[j].name;
             }
-            postsHTML += `<tr>
+            postsHTML += `
+                <tr>
                 <td>${post?.title}</td>
                 <td>${post?.content}</td>
                 <td>${categories}</td>
                 <td data-user-id=${post?.author?.id}>${post?.author?.userName}</td>
                 <td><button data-id=${post.id} class="button btn-primary editPost">Edit</button></td>
                 <td><button data-id=${post.id} class="button btn-danger deletePost">Delete</button></td>
-                </tr>`;
+                </tr>
+            `;
         }
     }
     postsHTML += `</tbody></table>`;
@@ -169,33 +181,6 @@ function deletePostHandlers() {
     }
 }
 
-
-
-
-// PREVIOUS CREATE POST FUNCTION
-// function createPostHTML(user) {
-//     let html = `
-//         <table class="table">
-//         <thead>
-//         <tr>
-//             <th scope="col">Title</th>
-//             <th scope="col">Content</th>
-//         </tr>
-//         </thead>
-//         <tbody>
-//     `;
-//     for (let i = 0; i < user.posts.length; i++) {
-//         const post = user.posts[i];
-//         html += `<tr>
-//             <td>${post.title}</td>
-//             <td>${post.content}</td>
-//             </tr>`;
-//     }
-//     html += `
-//         </tbody>
-//         </table>`;
-//     return html;
-// }
 
 // PASSWORD HANDLER PRIOR TO GOOGLE LOGIN
 // export function prepareUserJS() {
