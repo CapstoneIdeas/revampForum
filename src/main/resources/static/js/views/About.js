@@ -1,61 +1,80 @@
 export default function About(props) {
     return `
-        <header>
-            
-        </header>
-        <main>
-            <div class='aboutImgDiv'></div>
-            <div class='aboutTitleDiv'>
-                <h1>Cipher.</h1>
-            </div>
-            <div class='aboutInfoDiv'>
-                <p>Cipher is an easily digestible Blog API with SCRUD functionality powered by Jalopy and SpringBoot</p>
-            </div>
-            <div class='TeamHeaderDiv'>
-                <h3>Meet the Team:</h3>
-                <h2>bloc403</h2>
-                <p>This application was built out in collaboration of three Full-Stack Developers following AGILE methods</p>
-            </div>
-            <div class='TeamInfoDiv'>
-                <div class='playerDiv'>
-                    <div class='playerInfo'>
-                        <h4>Denzel</h4>
-                        <p>Codename: FullSnackDeveloper</p>
-                        <p>Top Category:</p>
-                        <p>Factorial:</p>
-                    </div>
-                    <div class='playerLinks'>
-                        <a href="https://github.com/Denzel-Britton"><img src="github-character.png" alt="Denzel's GitHub" style="width:42px;height:42px;"></a>
-                        <a href="https://www.linkedin.com/in/denzel-britton/"><img src="linkedin.png" alt="Denzel's LinkedIn" style="width:42px;height:42px;"></a>
+        <div class="responsive-container-block outer-container">
+            <div class="responsive-container-block inner-container">
+                <div class="responsive-cell-block wk-tab-12 wk-mobile-12 wk-desk-4 wk-ipadp-5 content-container">
+                    <div class="content-box">
+                        <p class="text-blk section-head">Cipher.</p>
+                        <p class="text-blk section-body">
+                        Cipher is an easily digestible blog application built in collaboration by bloc403 using AGILE methods.
+                        </p>
                     </div>
                 </div>
-                <div class='playerDiv'>
-                    <div class='playerInfo'>
-                        <h4>Kira</h4>
-                        <p>Codename: CypherSylph</p>
-                        <p>Top Category: Generative Art</p>
-                        <p>Factorial:</p>
-                    </div>
-                    <div class='playerLinks'>
-                        <a href="https://github.com/kmaalig"><img src="github-character.png" alt="Kira's GitHub" style="width:42px;height:42px;"></a>
-                        <a href="https://www.linkedin.com/in/kmaalig/"><img src="linkedin.png" alt="Kira's LinkedIn" style="width:42px;height:42px;"></a>
-                    </div>
-                </div>
-                <div class='playerDiv'>
-                    <div class='playerInfo'>
-                        <h4>Ben</h4>
-                        <p>Codename:</p>
-                        <p>Top Category:</p>
-                        <p>Factorial:</p>
-                    </div>
-                    <div class='playerLinks'>
-                        <a href="https://github.com/bjmarks"><img src="github-character.png" alt="Ben's GitHub" style="width:42px;height:42px;"></a>
-                        <a href="https://www.linkedin.com/in/bjmarks13/"><img src="linkedin.png" alt="Ben's LinkedIn" style="width:42px;height:42px;"></a>
+                <div class="responsive-cell-block wk-ipadp-6 wk-tab-12 wk-mobile-12 wk-desk-8 team-cards-outer-container">
+                    <div class="responsive-container-block team-cards-inner-container">
+                        <div class="responsive-cell-block wk-mobile-12 wk-ipadp-10 wk-tab-8 wk-desk-6 card-container">
+                            <div class="card">
+                                <div class="img-box">
+                                    <img src="../assets/denzel.jpg"class="person-img" />
+                                </div>
+                                <div class="card-content-box">
+                                    <p class="text-blk person-name">Denzel</p>
+                                    <p class="text-blk person-info">
+                                    Codename: FullSnackDeveloper <br>
+                                    Top Category: <br>
+                                    Factorial:
+                                    </p>
+                                    <div class="card-link-box">
+                                        <a href="https://www.linkedin.com/in/denzel-britton/"><img src="../assets/linkedin.png" alt="Denzel's LinkedIn" style="width:30px;height:30px;"></a>
+                                        <a href="https://github.com/Denzel-Britton"><img src="../assets/github-character.png" alt="Denzel's GitHub" style="width:32px;height:32px;"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="responsive-cell-block wk-mobile-12 wk-ipadp-10 wk-tab-8 wk-desk-6 card-container">
+                            <div class="card">
+                                <div class="img-box">
+                                    <img src="../assets/kira.jpg"class="person-img" />
+                                </div>
+                                <div class="card-content-box">
+                                    <p class="text-blk person-name">Kira</p>
+                                    <p class="text-blk person-info">
+                                    Codename: CypherSylph<br>
+                                    Top Category: Generative Art<br>
+                                    Factorial:
+                                    </p>
+                                    <div class="card-link-box">
+                                        <a href="https://www.linkedin.com/in/kmaalig/"><img src="../assets/linkedin.png" alt="Kira's LinkedIn" style="width:30px;height:30px;"></a>
+                                        <a href="https://github.com/kmaalig"><img src="../assets/github-character.png" alt="Kira's GitHub" style="width:32px;height:32px;"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="responsive-cell-block wk-mobile-12 wk-ipadp-10 wk-tab-8 wk-desk-6 card-container">
+                            <div class="card">
+                                <div class="img-box">
+                                    <img src="../assets/ben1.jpg"class="person-img" />
+                                </div>
+                                <div class="card-content-box">
+                                    <p class="text-blk person-name">Ben</p>
+                                    <p class="text-blk person-info">
+                                    Codename: <br>
+                                    Top Category: <br>
+                                    Factorial:
+                                    </p>
+                                    <div class="card-link-box">
+                                        <a href="https://www.linkedin.com/in/bjmarks13/"><img src="../assets/linkedin.png" alt="Ben's LinkedIn" style="width:30px;height:30px;"></a>    
+                                        <a href="https://github.com/bjmarks"><img src="../assets/github-character.png" alt="Ben's GitHub" style="width:32px;height:32px;"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </main>
+        </div>
     `;
 }
+
 export function AboutEvents() {
 }
