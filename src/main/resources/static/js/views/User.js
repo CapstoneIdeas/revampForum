@@ -12,7 +12,9 @@ export default function prepareUserHTML(props) {
     <main>
         <div class= 'userContainer'>
             <div class= 'userLeftDiv'>
-                <div class= 'userInfoDiv'></div>
+                <div class= 'userInfoDiv'>
+                    
+                </div>
                 <div class= 'newPostDiv'>
                     <h3>New Blog Entry: </h3>
                     <form action="">
@@ -33,7 +35,7 @@ export default function prepareUserHTML(props) {
     `;
 }
 
-//  GENERATE TABLE OF POSTS WITH EDIT AND DELETE OPTION
+// GENERATE TABLE OF POSTS WITH EDIT AND DELETE OPTION
 function generatePostsHTML(posts) {
     let postsHTML = `
         <table class="table">
@@ -45,30 +47,36 @@ function generatePostsHTML(posts) {
         </thead>
         <tbody>
     `;
-    for (let i = 0; i < posts.length; i++) {
-        const post = posts[i];
-        let categories = '';
-        for (let j = 0; j < post?.categories?.length; j++) {
-            if(categories !== "") {
-                categories += ", ";
+
+    // CHECK(LOG) POSTS
+    // console.log(posts);
+
+    if(posts) {
+        for (let i = 0; i < posts.length; i++) {
+            const post = posts[i];
+            let categories = '';
+            for (let j = 0; j < post?.categories?.length; j++) {
+                if(categories !== "") {
+                    categories += ", ";
+                }
+                categories += post.categories[j].name;
             }
-            categories += post.categories[j].name;
+            postsHTML += `<tr>
+                <td>${post?.title}</td>
+                <td>${post?.content}</td>
+                <td>${categories}</td>
+                <td data-user-id=${post?.author?.id}>${post?.author?.userName}</td>
+                <td><button data-id=${post.id} class="button btn-primary editPost">Edit</button></td>
+                <td><button data-id=${post.id} class="button btn-danger deletePost">Delete</button></td>
+                </tr>`;
         }
-        postsHTML += `<tr>
-            <td>${post?.title}</td>
-            <td>${post?.content}</td>
-            <td>${categories}</td>
-            <td data-user-id=${post?.author?.id}>${post?.author?.userName}</td>
-            <td><button data-id=${post.id} class="button btn-primary editPost">Edit</button></td>
-            <td><button data-id=${post.id} class="button btn-danger deletePost">Delete</button></td>
-            </tr>`;
     }
     postsHTML += `</tbody></table>`;
     return postsHTML;
 }
 
 // EXPORT FUNCTION FOR CRUD METHODS
-export function postSetup() {
+export function blogSetup() {
     addPostHandler();
     editPostHandlers();
     deletePostHandlers();
@@ -95,10 +103,10 @@ function addPostHandler(){
                 headers: getHeaders(),
                 body: JSON.stringify(newPost)
             }
-            fetch("http://localhost:8080/api/user", request)
+            fetch("http://localhost:8080/api/posts", request)
                 .then(response => {
                     console.log(response.status);
-                    createView("/user");
+                    CreateView("/user");
                 })
         }}
         else{
@@ -129,7 +137,7 @@ function editPostHandlers() {
                 headers: getHeaders(),
                 body: JSON.stringify(editPost)
             }
-            let url = `http://localhost:8080/api/user/${editButtons[i].getAttribute("data-id")}`;
+            let url = `http://localhost:8080/api/posts/${editButtons[i].getAttribute("data-id")}`;
             fetch(url, request).then(response => response.json());
             location.reload();
         }}
@@ -150,7 +158,7 @@ function deletePostHandlers() {
                 method: "DELETE",
                 headers: getHeaders(),
             }
-            let url = `http://localhost:8080/api/user/${deleteButtons[i].getAttribute("data-id")}`
+            let url = `http://localhost:8080/api/posts/${deleteButtons[i].getAttribute("data-id")}`
             fetch(url, request).then(response => response.json());
             location.reload();
 
@@ -190,10 +198,10 @@ function deletePostHandlers() {
 // }
 
 // PASSWORD HANDLER PRIOR TO GOOGLE LOGIN
-export function prepareUserJS() {
+// export function prepareUserJS() {
 //     doTogglePasswordHandler();
 //     doSavePasswordHandler();
-}
+// }
 // function doSavePasswordHandler() {
 //     const button = document.querySelector("#updatePassword");
 //     button.addEventListener("click", function(event) {
