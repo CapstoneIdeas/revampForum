@@ -67,7 +67,7 @@ function addPostHandler(){
         const contentField = document.querySelector("#content");
         if(isLoggedIn()){
         if((titleField.value === "") || (contentField.value === "")) {
-            console.log("needs more data");
+            console.log("content required");
         }
         else {
             let newPost = {
