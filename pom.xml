@@ -91,7 +91,7 @@
             <version>6.0.15.Final</version>
         </dependency>
     </dependencies>
-
+​
     <build>
         <plugins>
             <plugin>
@@ -174,7 +174,7 @@
             </snapshots>
         </pluginRepository>
     </pluginRepositories>
-
+​
     <profiles>
         <profile>
             <id>native</id>
@@ -217,5 +217,5 @@
             </build>
         </profile>
     </profiles>
-
+​
 </project>

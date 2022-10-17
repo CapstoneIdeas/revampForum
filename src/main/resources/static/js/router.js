@@ -7,7 +7,7 @@ import Login, {LoginEvents} from "./views/Login.js";
 import Register, {RegisterEvent} from "./views/Register.js"
 import Logout, {LogoutEvents} from "./views/Logout.js";
 import PostIndex, {postSetup} from "./views/PostIndex.js";
-import prepareUserHTML, {prepareUserJS} from "./views/User.js"
+import prepareUserHTML, {blogSetup} from "./views/User.js"
 /**
  * Returns the route object for a specific route based on the given URI
  * @param URI
@@ -22,13 +22,6 @@ export default function router(URI) {
             title: 'Home',
             viewEvent: HomeEvents
         },
-        '/logout': {
-            returnView: Logout,
-            state: {},
-            uri: '/',
-            title: 'Logout',
-            viewEvent: LogoutEvents
-        },
         '/login': {
             returnView: Login,
             state: {},
@@ -36,19 +29,44 @@ export default function router(URI) {
             title: "Login",
             viewEvent: LoginEvents
         },
-        '/register': {
-            returnView: Register,
+        '/logout': {
+            returnView: Logout,
             state: {},
-            uri: '/register',
-            title: 'Register',
-            viewEvent: RegisterEvent
+            uri: '/',
+            title: 'Logout',
+            viewEvent: LogoutEvents
         },
+        // '/register': {
+        //     returnView: Register,
+        //     state: {},
+        //     uri: '/register',
+        //     title: 'Register',
+        //     viewEvent: RegisterEvent
+        // },
         '/about': {
             returnView: About,
             state: {},
             uri: '/about',
             title: 'About',
             viewEvent: AboutEvents
+        },
+        '/user': {
+            returnView: prepareUserHTML,
+            state: {
+                me: '/api/user'
+            },
+            uri: '/user',
+            title: 'User Info',
+            viewEvent: blogSetup
+        },
+        '/posts': {
+            returnView: PostIndex,
+            state: {
+                posts: '/api/posts'
+            },
+            uri: '/posts',
+            title: 'All Posts',
+            viewEvent: postSetup
         },
         '/error': {
             returnView: Error404,
@@ -61,24 +79,6 @@ export default function router(URI) {
             state: {},
             uri: location.pathname,
             title: 'Loading...',
-        },
-        '/me': {
-            returnView: prepareUserHTML,
-            state: {
-                me: '/api/users/me'
-            },
-            uri: '/me',
-            title: 'User Info',
-            viewEvent: prepareUserJS
-        },
-        '/posts': {
-            returnView: PostIndex,
-            state: {
-                posts: '/api/posts'
-            },
-            uri: '/posts',
-            title: 'All Posts',
-            viewEvent: postSetup
         }
     };
     // if we see a URI with index.html then interpret that as a route for /
