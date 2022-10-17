@@ -20,7 +20,7 @@ import java.util.Optional;
     @CrossOrigin
     @AllArgsConstructor
     @RestController
-    @RequestMapping(value = "/api/users", produces = "application/json")
+    @RequestMapping(value = "/api/user", produces = "application/json")
     public class UsersController {
         private UsersRepository usersRepository;
         private AuthBuddy authBuddy;
