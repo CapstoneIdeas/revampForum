@@ -43,7 +43,7 @@ function generatePostsHTML(posts) {
         }
         postsHTML += `   
          
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     
 
         <div id="container">
             <div class="row">
@@ -51,33 +51,11 @@ function generatePostsHTML(posts) {
                     <div class="product-details">
                         <h1>${post?.title}</h1>
                         <p class="information">${post?.content}</p>
-
-                        <div class="control">
-
-                            <button class="btn">
-                            <span class="price">Read</span>
-                            <span class="shopping-cart"><i class="fa fa-folder-open " aria-hidden="true"></i></span>
-                            <span class="buy">More</span>
-                            </button>
-                        </div>
                     </div>
-
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1606830733744-0ad778449672?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mzl8fGNocmlzdG1hcyUyMHRyZWV8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="">
-                        <div class="info">
-                            <h2> Description</h2>
-                            <ul>
-                            <li><strong>Height : </strong>5 Ft </li>
-                            <li><strong>Shade : </strong>Olive green</li>
-                            <li><strong>Decoration: </strong>balls and bells</li>
-                            <li><strong>Material: </strong>Eco-Friendly</li>    
-                             </ul>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </div>
+        
       `;
     }
     postsHTML += `</tbody></table>`;
