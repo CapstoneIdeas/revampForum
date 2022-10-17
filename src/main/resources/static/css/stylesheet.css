@@ -81,13 +81,13 @@ nav a {
         -webkit-text-stroke: 2px gray;
     }
 }
-footer {
-    text-align: center;
-    position: absolute;
-    width: 95%;
-    min-height: 15px;
-    bottom: 0;
-}
+/*footer {*/
+/*    text-align: center;*/
+/*    position: absolute;*/
+/*    width: 95%;*/
+/*    min-height: 15px;*/
+/*    bottom: 0;*/
+/*}*/
 
 /*-----------------------------------------------------------------*/
 
@@ -204,6 +204,7 @@ footer {
 .row{
     box-shadow: 0 15px 30px 1px grey;
     background: rgba(255, 255, 255, 0.90);
+    width: 135%;
 }
 body {
     background: #DFC2F2;
@@ -220,11 +221,12 @@ body {
     overflow: hidden;
     /*margin: 5em auto;*/
     /*height: 350px;*/
-    margin-bottom: 25px;
-    width: 98%;
+    margin-bottom: 44px;
+    width: 88%;
 
 
 }
+
 
 
 
@@ -387,3 +389,9 @@ body {
 
 .product-image:hover img {transition: all 0.3s ease-out;}
 .product-image:hover img {transform: scale(1.2, 1.2);}
+
+.column{
+    width: 80%;
+}
+
+/*-----------------------------------------------------------------------*/

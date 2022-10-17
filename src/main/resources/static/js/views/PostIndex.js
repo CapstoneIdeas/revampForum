@@ -104,7 +104,7 @@ function generatePostsHTML(posts) {
                  
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<div class="container" id="container">
+<div id="container">
 <div class="row">
 <div class="column">
 <div class="product-details">
@@ -120,7 +120,8 @@ function generatePostsHTML(posts) {
 
 <button class="btn">
  <span class="price">Read</span>
-   <span class="shopping-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
+   <span class="shopping-cart"><i class="fa fa-folder-open " aria-hidden="true"></i></span>
+  
    <span class="buy">More</span>
  </button>
 
@@ -152,8 +153,8 @@ function generatePostsHTML(posts) {
 
 </div>
 
-          
-
+   
+  
 `;
     }
     postsHTML += `</tbody></table>`;
