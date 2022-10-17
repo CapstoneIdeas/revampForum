@@ -85,9 +85,9 @@ function generatePostsHTML(posts) {
                         <li><strong>Material: </strong>Eco-Friendly</li>    
                          </ul>
                     </div>
-                 </div>
+                </div>
 
-             </div>
+            </div>
         </div>
     </div>
 
