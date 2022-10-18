@@ -83,26 +83,20 @@ nav a {
 }
 
 
-/*-----------------------css iv added ------------------------------------------*/
-
-
-
-    .wrapper {
+/*-----------------------css iv added for post page  ------------------------------------------*/
+ .wrapper {
         display: grid;
         grid-template-columns: 50%  50%;
 
     }
-
-
+/* font from google */
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bree+Serif&family=EB+Garamond:ital,wght@0,500;1,800&display=swap');
-
-
 /*------------css for the div cards not --------------*/
 .row{
-    /*box-shadow: 0 15px 30px 1px grey;*/
     background: rgba(255, 255, 255, 0.90);
     width: 135%;
 }
+
 body {
     background: lightgrey;
 }
@@ -121,8 +115,6 @@ body {
 }
 
 
-
-
 .text {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -133,14 +125,6 @@ body {
 }
 
 
-
-
-
-
-
-
 .column{
     width: 80%;
 }
-
-/*-----------------------------------------------------------------------*/
