@@ -76,14 +76,7 @@ function generatePostsHTML(posts) {
                             </div>
                           </div>
                         </div>
-                        
-                        
-                        
-                        
-                        
-                        
-       
-                       
+    
                     </div>
                 </div>
             </div>
