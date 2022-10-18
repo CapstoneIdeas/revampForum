@@ -23,13 +23,22 @@ export default function prepareUserHTML(props) {
                         </div>
                         <div class="small-group">
                             <label for="category">Category</label>
-                            <select name="category">
-                                <option value="dataScience">Data Science</option>
-                                <option value="generativeArt">Generative Art</option>
-                                <option value="languages">Languages</option>
-                                <option value="uiUxDesign">UI/UX Dedign</option>
-                                <option value="webDevelopment">Web Development</option>
-                            </select>
+                                <div class="radio-toolbar">
+                                    <input type="radio" id="radioDataScience" name="radioCategory" value="dataScience" checked>
+                                    <label for="radioDataScience">Data Science</label>
+
+                                    <input type="radio" id="radioGenerativeArt" name="radioCategory" value="generativeArt">
+                                    <label for="radioGenerativeArt">Generative Art</label>
+
+                                    <input type="radio" id="radioLanguages" name="radioCategory" value="language">
+                                    <label for="radioLanguages">Languages</label>
+                                    
+                                    <input type="radio" id="radioUiUxDesign" name="radioCategory" value="radioUiUxDesign">
+                                    <label for="radioUiUxDesign">UI/UX Design</label>
+
+                                    <input type="radio" id="radioWebDevelopment" name="radioCategory" value="webDevelopment">
+                                    <label for="radioWebDevelopment">Web Development</label>
+                                </div>     
                         </div>
                         <div class="textarea-div">
                             <label for="content">Content</label>
