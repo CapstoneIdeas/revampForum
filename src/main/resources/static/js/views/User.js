@@ -24,7 +24,7 @@ export default function prepareUserHTML(props) {
                         <div class="small-group">
                             <label for="category">Category</label>
                                 <div class="radio-toolbar">
-                                    <input type="radio" id="radioDataScience" name="radioCategory" value="dataScience" checked>
+                                    <input type="radio" id="radioDataScience" name="radioCategory" value="dataScience">
                                     <label for="radioDataScience">Data Science</label>
 
                                     <input type="radio" id="radioGenerativeArt" name="radioCategory" value="generativeArt">
