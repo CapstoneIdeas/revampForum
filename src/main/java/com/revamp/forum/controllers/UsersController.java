@@ -40,6 +40,9 @@ import java.util.Optional;
                 UserFetchDTO userDTO = new UserFetchDTO();
                 userDTO.setId(user.getId());
                 userDTO.setUserName(user.getUserName());
+                userDTO.setEmail(user.getEmail());
+                userDTO.setRole(user.getRole());
+                userDTO.setProfilePic(user.getProfilePic());
                 userDTOs.add(userDTO);
             }
             return userDTOs;

@@ -10,7 +10,7 @@ export function setLoggedInUserInfo() {
         method: "GET",
         headers: getHeaders()
     }
-    const url = BACKEND_HOST_URl + "/api/users/authinfo";
+    const url = BACKEND_HOST_URl + "/api/user/authinfo";
     fetch(url, request)
         .then(function(response) {
             return response.json();
@@ -162,7 +162,7 @@ export async function removeStaleTokens() {
         method: 'GET',
         headers: getHeaders()
     };
-    await fetch(`/api/users/authinfo`, request)
+    await fetch(`/api/user/authinfo`, request)
         .then((response) => {
             // if fetch error then you might be using stale tokens
             if (response.status === 401) {
