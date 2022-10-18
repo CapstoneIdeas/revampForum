@@ -1,11 +1,8 @@
 package com.revamp.forum.controllers;
-import com.revamp.forum.data.Category;
 import com.revamp.forum.data.FieldHelper;
 import com.revamp.forum.data.Post;
 import com.revamp.forum.data.User;
-import com.revamp.forum.repositories.CategoriesRepository;
 import com.revamp.forum.repositories.PostsRepository;
-import com.revamp.forum.repositories.UsersRepository;
 import com.revamp.forum.services.AuthBuddy;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;
@@ -22,8 +19,6 @@ import java.util.Optional;
 public class PostsController {
     private AuthBuddy authBuddy;
     private PostsRepository postsRepository;
-//    private UsersRepository usersRepository;
-//    private CategoriesRepository categoriesRepository;
     @GetMapping("")
     public List<Post> fetchPosts() {
         return postsRepository.findAll();
