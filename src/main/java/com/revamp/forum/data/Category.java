@@ -19,6 +19,8 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column
+    private String name;
     @Enumerated(EnumType.STRING)
     @Column
     private CategoryTypes category;
