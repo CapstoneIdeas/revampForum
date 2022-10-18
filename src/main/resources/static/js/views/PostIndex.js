@@ -53,14 +53,15 @@ function generatePostsHTML(posts) {
                         <div class="text">
                         <p class="information">${post?.content}</p>
                         </div>
+                        
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop-${i}">
                           Read more
                         </button>
                        
-                        
                         <!-- Modal -->
                         <div class="modal fade " id="staticBackdrop-${i}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <!--  div below has the scroll  -->
                           <div class="modal-dialog  modal-dialog-scrollable">
                             <div class="modal-content">
                               <div class="modal-header">
