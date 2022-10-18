@@ -27,6 +27,7 @@ public class Post {
     private User author;
     @ManyToOne
     @JoinColumn
+    @JsonIgnoreProperties({"posts"})
     private Category category;
 }
 /*

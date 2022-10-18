@@ -3,6 +3,9 @@ package com.revamp.forum.data;
 //import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.List;
 
 @NoArgsConstructor
@@ -21,6 +24,7 @@ public class Category {
     @Column
     private CategoryTypes category;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
+    @JsonIgnoreProperties({"category"})
     private List<Post> post;
 
 }
