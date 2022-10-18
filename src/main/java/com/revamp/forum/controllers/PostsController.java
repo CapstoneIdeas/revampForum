@@ -19,6 +19,7 @@ import java.util.Optional;
 public class PostsController {
     private AuthBuddy authBuddy;
     private PostsRepository postsRepository;
+    
     @GetMapping("")
     public List<Post> fetchPosts() {
         return postsRepository.findAll();

@@ -10,7 +10,7 @@ export function setLoggedInUserInfo() {
         method: "GET",
         headers: getHeaders()
     }
-    const url = BACKEND_HOST_URl + "/api/users/authinfo";
+    const url = BACKEND_HOST_URl + "/api/user/authinfo";
     fetch(url, request)
         .then(function(response) {
             return response.json();

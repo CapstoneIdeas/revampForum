@@ -1,10 +1,14 @@
 import CreateView from "../createView.js"
-import {getHeaders, isLoggedIn} from "../auth.js";
+import {getHeaders, isLoggedIn, getUser} from "../auth.js";
 
 let posts;
+let loggedInUser;
 export default function prepareUserHTML(props) {
+    
+    loggedInUser = getUser();
     const postsHTML = generatePostsHTML(props.posts);
     posts = props.posts
+
     return `
     <header>
         <h2>User Blog</h2>
@@ -50,8 +54,10 @@ export default function prepareUserHTML(props) {
                 </div>
             </div>
             <div class= 'userRightDiv'>
-                <h3>Blog History</h3>
-                <div class= 'userPostHistory'> ${postsHTML} </div>
+                <div class= 'userPostHistory'>
+                    <h3>Blog History</h3> 
+                    ${postsHTML} 
+                 </div>
             </div>
         </div>
     </main>
@@ -69,10 +75,16 @@ function generatePostsHTML(posts) {
         </tr>
         </thead>
         <tbody>
-    `;    
+    `;
+// console.log(posts);
+// console.log(loggedInUser);
     if(posts) {
         for (let i = 0; i < posts.length; i++) {
             const post = posts[i];
+            // COMPARE LOGGED IN USER WITH POST USER ID
+            if(loggedInUser.id !== post.author.id) {
+                continue
+            }
             let categories = '';
             for (let j = 0; j < post?.categories?.length; j++) {
                 if(categories !== "") {

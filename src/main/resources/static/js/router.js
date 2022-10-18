@@ -44,7 +44,8 @@ export default function router(URI) {
         '/user': {
             returnView: prepareUserHTML,
             state: {
-                user: '/api/user'
+                user: '/api/user',
+                posts: '/api/posts'
             },
             uri: '/user',
             title: 'User Info',
