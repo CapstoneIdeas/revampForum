@@ -86,8 +86,6 @@ function generatePostsHTML(posts) {
       `;
     }
 
-
-
     postsHTML += `</tbody></table>`;
     return postsHTML;
 }
