@@ -22,8 +22,8 @@ import java.util.Optional;
 public class PostsController {
     private AuthBuddy authBuddy;
     private PostsRepository postsRepository;
-    private UsersRepository usersRepository;
-    private CategoriesRepository categoriesRepository;
+//    private UsersRepository usersRepository;
+//    private CategoriesRepository categoriesRepository;
     @GetMapping("")
     public List<Post> fetchPosts() {
         return postsRepository.findAll();

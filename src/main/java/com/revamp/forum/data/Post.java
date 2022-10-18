@@ -25,7 +25,12 @@ public class Post {
     @ManyToOne
     @JsonIgnoreProperties({"posts", "password"})
     private User author;
-    @ManyToMany(
+    @ManyToOne
+    @JoinColumn
+    private Category category;
+}
+/*
+@ManyToMany(
             fetch = FetchType.LAZY,
             cascade = {CascadeType.DETACH, CascadeType.REFRESH},
             targetEntity = Category.class)
@@ -36,6 +41,5 @@ public class Post {
             foreignKey = @ForeignKey(ConstraintMode.CONSTRAINT),
             inverseForeignKey = @ForeignKey(ConstraintMode.CONSTRAINT)
     )
-    @JsonIgnoreProperties("posts")
-    private Collection<Category> categories;
-}
+    private Category categories;
+ */

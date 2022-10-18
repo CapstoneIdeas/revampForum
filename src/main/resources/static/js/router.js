@@ -3,7 +3,6 @@ import About, {AboutEvents} from "./views/About.js";
 import Error404 from "./views/Error404.js";
 import Loading from "./views/Loading.js";
 import Login, {LoginEvents} from "./views/Login.js";
-// import LoginEvent from "./auth.js";
 import Logout, {LogoutEvents} from "./views/Logout.js";
 import PostIndex, {postSetup} from "./views/PostIndex.js";
 import prepareUserHTML, {blogSetup} from "./views/User.js"

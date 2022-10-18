@@ -13,23 +13,23 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
-@AllArgsConstructor
-@RestController
-@RequestMapping(value = "/api/categories", produces = "application/json")
+//@AllArgsConstructor
+//@RestController
+//@RequestMapping(value = "/api/categories", produces = "application/json")
 public class CategoriesController {
-    private CategoriesRepository categoriesRepository;
-
-    @GetMapping("")
-    private List<Category> fetchAllCategories() {
-        return categoriesRepository.findAll();
-    }
-
-    @GetMapping("/search")
-    private Category fetchCategoryByCategoryName(@RequestParam CategoryTypes categoryName) {
-        Category category = categoriesRepository.findByCategory(categoryName);
-        if (category == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Category " + categoryName + " not found");
-        }
-        return category;
-    }
+//    private CategoriesRepository categoriesRepository;
+//
+//    @GetMapping("")
+//    private List<Category> fetchAllCategories() {
+//        return categoriesRepository.findAll();
+//    }
+//
+//    @GetMapping("/search")
+//    private Category fetchCategoryByCategoryName(@RequestParam CategoryTypes categoryName) {
+//        Category category = categoriesRepository.findByCategory(categoryName);
+//        if (category == null) {
+//            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Category " + categoryName + " not found");
+//        }
+//        return category;
+//    }
 }
