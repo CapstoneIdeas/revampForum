@@ -78,13 +78,6 @@ function generatePostsHTML(posts) {
             if(loggedInUser.id !== post.author.id) {
                 continue
             }
-            // let categories = '';
-            // for (let j = 0; j < post?.categories?.length; j++) {
-            //     if(categories !== "") {
-            //         categories += ", ";
-            //     }
-            //     categories += post.categories[j].name;
-            // }
             postsHTML += `
                 <div class="card">
                     <div class="img-category-box">
