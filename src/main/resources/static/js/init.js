@@ -33,6 +33,9 @@ function addListenerToNavLinks() {
         if(event.target.type && event.target.type === "checkbox") {
             return;
         }
+        if(event.target.type && event.target.type === "radio") {
+            return;
+        }
         if(event.target.matches('label')) {
             return;
         }

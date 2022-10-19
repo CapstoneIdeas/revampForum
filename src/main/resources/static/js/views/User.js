@@ -1,10 +1,14 @@
 import CreateView from "../createView.js"
-import {getHeaders, isLoggedIn} from "../auth.js";
+import {getHeaders, isLoggedIn, getUser} from "../auth.js";
 
 let posts;
+let loggedInUser;
 export default function prepareUserHTML(props) {
+    
+    loggedInUser = getUser();
     const postsHTML = generatePostsHTML(props.posts);
     posts = props.posts
+
     return `
     <header>
         <h2>User Blog</h2>
@@ -24,7 +28,7 @@ export default function prepareUserHTML(props) {
                         <div class="small-group">
                             <label for="category">Category</label>
                                 <div class="radio-toolbar">
-                                    <input type="radio" id="radioDataScience" name="radioCategory" value="dataScience" checked>
+                                    <input type="radio" id="radioDataScience" name="radioCategory" value="dataScience">
                                     <label for="radioDataScience">Data Science</label>
 
                                     <input type="radio" id="radioGenerativeArt" name="radioCategory" value="generativeArt">
@@ -50,8 +54,10 @@ export default function prepareUserHTML(props) {
                 </div>
             </div>
             <div class= 'userRightDiv'>
-                <h3>Blog History</h3>
-                <div class= 'userPostHistory'> ${postsHTML} </div>
+                <div class= 'userPostHistory'>
+                    <h3>Blog History</h3> 
+                    ${postsHTML} 
+                 </div>
             </div>
         </div>
     </main>
@@ -60,35 +66,34 @@ export default function prepareUserHTML(props) {
 
 // GENERATE TABLE OF POSTS WITH EDIT AND DELETE OPTION
 function generatePostsHTML(posts) {
+    
     let postsHTML = `
-        <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">Title</th>
-            <th scope="col" colspan="3">Content</th>
-        </tr>
-        </thead>
-        <tbody>
-    `;    
+        <div class="responsive-cell-block wk-mobile-12 wk-ipadp-10 wk-tab-8 wk-desk-6 card-container"></div>
+    `;
+
     if(posts) {
         for (let i = 0; i < posts.length; i++) {
             const post = posts[i];
-            let categories = '';
-            for (let j = 0; j < post?.categories?.length; j++) {
-                if(categories !== "") {
-                    categories += ", ";
-                }
-                categories += post.categories[j].name;
+            // COMPARE LOGGED IN USER WITH POST USER ID
+            if(loggedInUser.id !== post.author.id) {
+                continue
             }
             postsHTML += `
-                <tr>
-                <td>${post?.title}</td>
-                <td>${post?.content}</td>
-                <td>${categories}</td>
-                <td data-user-id=${post?.author?.id}>${post?.author?.userName}</td>
-                <td><button data-id=${post.id} class="button btn-primary editPost">Edit</button></td>
-                <td><button data-id=${post.id} class="button btn-danger deletePost">Delete</button></td>
-                </tr>
+                <div class="card">
+                    <div class="img-category-box">
+                        <img src="../assets/denzel.jpg"class="person-img" />
+                    </div>
+                    <div class="card-content-box">
+                        <p class="text-blk blog-title">${post?.title}</p>
+                        <p class="text-blk blog-author">${post?.author?.userName}</p>
+                        <p class="text-blk blog-category">${post?.category}</p>
+                        <p class="text-blk blog-content">${post?.content}</p>
+                        <div class="card-btn-box">
+                            <button data-id=${post.id} class="button btn-primary editPost">Edit</button>
+                            <button data-id=${post.id} class="button btn-danger deletePost">Delete</button>
+                        </div>
+                    </div>
+                </div>
             `;
         }
     }
