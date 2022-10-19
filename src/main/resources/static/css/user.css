@@ -5,7 +5,7 @@ body{
 /* MAIN CONTAINERS */
 .userContainer {
 	display: flex;
-	align-items: center;
+	height: 90%;
 }
 .userLeftDiv {
 	width: 600px;
@@ -83,7 +83,7 @@ input, select {
 	display: inline-block;
 	padding: 10px 17px;
 	font-family: 'Nunito', sans-serif;
-	font-size: 16px;
+	font-size: 14px;
 	border: 2px solid #444;
 	border-radius: 25px;
 	margin-right: 3px;
@@ -93,33 +93,33 @@ input, select {
 	display: inline-block;
 	background-color: #ae2012ff;
 	padding: 10px 17px;
-	border: 2px solid #444;
+	border: 2px solid #ae2012ff;
 }
 .radio-toolbar label[for="radioGenerativeArt"] {
 	display: inline-block;
 	background-color: #ca6702ff;
 	padding: 10px 17px;
-	border: 2px solid #444;
+	border: 2px solid #ca6702ff;
 }
 .radio-toolbar label[for="radioLanguages"] {
 	display: inline-block;
 	background-color: #ee9b00ff;
 	padding: 10px 17px;
-	border: 2px solid #444;
+	border: 2px solid #ee9b00ff;
 }
 .radio-toolbar label[for="radioUiUxDesign"] {
 	display: inline-block;
 	background-color: #0a9396ff;
 	padding: 10px 17px;
 	font-size: 16px;
-	border: 2px solid #444;
+	border: 2px solid #0a9396ff;
 }
 .radio-toolbar label[for="radioWebDevelopment"] {
 	display: inline-block;
 	background-color: #005f73ff;
 	padding: 10px 17px;
 	font-size: 16px;
-	border: 2px solid #444;
+	border: 2px solid #005f73ff;
 }
 .radio-toolbar label:hover {
 	background-color: #dfd;

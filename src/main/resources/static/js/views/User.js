@@ -28,19 +28,19 @@ export default function prepareUserHTML(props) {
                         <div class="small-group">
                             <label for="category">Category</label>
                                 <div class="radio-toolbar">
-                                    <input type="radio" id="radioDataScience" name="radioCategory" value="dataScience">
+                                    <input type="radio" id="radioDataScience" name="radioCategory" value="1">
                                     <label for="radioDataScience">Data Science</label>
 
-                                    <input type="radio" id="radioGenerativeArt" name="radioCategory" value="generativeArt">
+                                    <input type="radio" id="radioGenerativeArt" name="radioCategory" value="2">
                                     <label for="radioGenerativeArt">Generative Art</label>
 
-                                    <input type="radio" id="radioLanguages" name="radioCategory" value="language">
+                                    <input type="radio" id="radioLanguages" name="radioCategory" value="3">
                                     <label for="radioLanguages">Languages</label>
                                     
-                                    <input type="radio" id="radioUiUxDesign" name="radioCategory" value="radioUiUxDesign">
+                                    <input type="radio" id="radioUiUxDesign" name="radioCategory" value="4">
                                     <label for="radioUiUxDesign">UI/UX Design</label>
 
-                                    <input type="radio" id="radioWebDevelopment" name="radioCategory" value="webDevelopment">
+                                    <input type="radio" id="radioWebDevelopment" name="radioCategory" value="5">
                                     <label for="radioWebDevelopment">Web Development</label>
                                 </div>     
                         </div>
@@ -114,6 +114,7 @@ function addPostHandler(){
     addButton.addEventListener("click", function (event) {
         const titleField =  document.querySelector("#title");
         const contentField = document.querySelector("#content");
+        const checkedCategory = document.querySelector('input[name=radioCategory]:checked');
         if(isLoggedIn()){
         if((titleField.value === "") || (contentField.value === "")) {
             console.log("Content required");
@@ -121,6 +122,7 @@ function addPostHandler(){
         else {
             let newPost = {
                 title: titleField.value,
+                category: {id:checkedCategory.value},
                 content: contentField.value,
             }
             console.log(newPost);
