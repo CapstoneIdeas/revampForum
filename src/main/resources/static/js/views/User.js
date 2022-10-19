@@ -3,12 +3,13 @@ import {getHeaders, isLoggedIn, getUser} from "../auth.js";
 
 let posts;
 let loggedInUser;
+// let profilePic;
 export default function prepareUserHTML(props) {
     
     loggedInUser = getUser();
+    console.log(loggedInUser);
     const postsHTML = generatePostsHTML(props.posts);
     posts = props.posts
-
     return `
     <header>
         <h2>User Blog</h2>
@@ -16,7 +17,9 @@ export default function prepareUserHTML(props) {
     <main>
         <div class= 'userContainer'>
             <div class= 'userLeftDiv'>
-                <div class= 'userInfoDiv'></div>
+                <div class= 'userInfoDiv'>
+                    <img src= "${loggedInUser.profilePic}" class="user-img">
+                </div>
                 <div class= 'newPostDiv'>
                     <form>
                     <h2>+ New Blog</h2>
@@ -79,16 +82,16 @@ function generatePostsHTML(posts) {
                 continue
             }
             postsHTML += `
-                <div class="card">
+                <div class="blogCard">
                     <div class="img-category-box">
-                        <img src="../assets/denzel.jpg"class="person-img" />
+                        <img src="../assets/denzel.jpg"class="category-img" />
                     </div>
-                    <div class="card-content-box">
+                    <div class="blog-card-content-box">
                         <p class="text-blk blog-title">${post?.title}</p>
-                        <p class="text-blk blog-author">${post?.author?.userName}</p>
-                        <p class="text-blk blog-category">${post?.category.name}</p>
+                        <p class="text-blk blog-author"><i>posted by</i> <b>${post?.author?.userName}</b></p>
+                        <p class="text-blk blog-category"><i>posted to</i> <b>${post?.category.name}</b></p>
                         <p class="text-blk blog-content">${post?.content}</p>
-                        <div class="card-btn-box">
+                        <div class="blog-card-btn-box">
                             <button data-id=${post.id} class="button btn-primary editPost">Edit</button>
                             <button data-id=${post.id} class="button btn-danger deletePost">Delete</button>
                         </div>
@@ -190,8 +193,7 @@ function deletePostHandlers() {
             fetch(url, request).then(response => response.json());
             location.reload();
 
-        }
-    else{
+        }else{
             console.log("Login required");
         }});
     }
