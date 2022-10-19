@@ -1,27 +1,8 @@
-export default function Login(props) {
-    return `
-<h1>Log In</h1>
-<form id="login-form">
-    <label for="username">Username</label>
-    <input id="username" name="username" type="text">
-    <label for="password">Password</label>
-    <input id="password" name="password" type="password">
-    <input id="login-btn" type="submit" value="Log In">
-</form>
-<h1>or login with google</h1>
-<button id="googleBtnLogin">Google</button>
-<div id="login-container"></div>
-`;
-}
-
+export default function Login(props) { return `<div id="login-container"></div>`;}
 export function LoginEvents() {
-let gBTN = document.getElementById("googleBtnLogin");
-gBTN.addEventListener("click", () => {
-        // Google's OAuth 2.0 endpoint for requesting an access token
-        var oauth2Endpoint = 'https://accounts.google.com/o/oauth2/v2/auth';
-        // Create <form> element to submit parameters to OAuth 2.0 endpoint.
-        var form = document.createElement('form');
-        form.setAttribute('method', 'GET'); // Send as a GET request.
+        var oauth2Endpoint = 'https://accounts.google.com/o/oauth2/v2/auth';// Google's OAuth 2.0 endpoint for requesting an access token
+        var form = document.createElement('form');// Create <form> element to submit parameters to OAuth 2.0 endpoint.
+    form.setAttribute('method', 'GET'); // Send as a GET request.
         form.setAttribute('action', oauth2Endpoint);
         // Parameters to pass to OAuth 2.0 endpoint.
         var params = {'client_id': GOOGLE_CLIENT_ID,
@@ -41,6 +22,5 @@ gBTN.addEventListener("click", () => {
         // Add form to page and submit it to open the OAuth 2.0 endpoint.
         document.querySelector("#login-container").appendChild(form);
         form.submit();
-    });
+    // });
 }
-

@@ -162,7 +162,7 @@ export async function removeStaleTokens() {
         method: 'GET',
         headers: getHeaders()
     };
-    await fetch(`/api/users/authinfo`, request)
+    await fetch(`/api/user/authinfo`, request)
         .then((response) => {
             // if fetch error then you might be using stale tokens
             if (response.status === 401) {
