@@ -113,7 +113,5 @@ function search() {
             }
 
         });
-
-
     });
 }
