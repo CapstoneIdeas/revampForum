@@ -66,18 +66,11 @@ export default function prepareUserHTML(props) {
 
 // GENERATE TABLE OF POSTS WITH EDIT AND DELETE OPTION
 function generatePostsHTML(posts) {
+    
     let postsHTML = `
-        <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">Title</th>
-            <th scope="col" colspan="3">Content</th>
-        </tr>
-        </thead>
-        <tbody>
+        <div class="responsive-cell-block wk-mobile-12 wk-ipadp-10 wk-tab-8 wk-desk-6 card-container"></div>
     `;
-// console.log(posts);
-// console.log(loggedInUser);
+
     if(posts) {
         for (let i = 0; i < posts.length; i++) {
             const post = posts[i];
@@ -85,22 +78,29 @@ function generatePostsHTML(posts) {
             if(loggedInUser.id !== post.author.id) {
                 continue
             }
-            let categories = '';
-            for (let j = 0; j < post?.categories?.length; j++) {
-                if(categories !== "") {
-                    categories += ", ";
-                }
-                categories += post.categories[j].name;
-            }
+            // let categories = '';
+            // for (let j = 0; j < post?.categories?.length; j++) {
+            //     if(categories !== "") {
+            //         categories += ", ";
+            //     }
+            //     categories += post.categories[j].name;
+            // }
             postsHTML += `
-                <tr>
-                <td>${post?.title}</td>
-                <td>${post?.content}</td>
-                <td>${categories}</td>
-                <td data-user-id=${post?.author?.id}>${post?.author?.userName}</td>
-                <td><button data-id=${post.id} class="button btn-primary editPost">Edit</button></td>
-                <td><button data-id=${post.id} class="button btn-danger deletePost">Delete</button></td>
-                </tr>
+                <div class="card">
+                    <div class="img-category-box">
+                        <img src="../assets/denzel.jpg"class="person-img" />
+                    </div>
+                    <div class="card-content-box">
+                        <p class="text-blk blog-title">${post?.title}</p>
+                        <p class="text-blk blog-author">${post?.author?.userName}</p>
+                        <p class="text-blk blog-category">${post?.category}</p>
+                        <p class="text-blk blog-content">${post?.content}</p>
+                        <div class="card-btn-box">
+                            <button data-id=${post.id} class="button btn-primary editPost">Edit</button>
+                            <button data-id=${post.id} class="button btn-danger deletePost">Delete</button>
+                        </div>
+                    </div>
+                </div>
             `;
         }
     }
