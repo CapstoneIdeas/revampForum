@@ -72,6 +72,13 @@ import java.util.Optional;
             newUser.setCreatedAt(LocalDate.now());
             usersRepository.save(newUser);
         }
+        @PostMapping("")
+        public void create(@RequestParam(name = "email") String email, @RequestParam(name = "username") String username){
+            User newUser = new User();
+            newUser.setUserName(username);
+            newUser.setEmail(email);
+            usersRepository.save(newUser);
+        }
         @DeleteMapping("/{id}")
         public void deleteUserById(@PathVariable long id) {
             Optional<User> optionalUser = usersRepository.findById(id);
