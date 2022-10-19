@@ -4,8 +4,8 @@ export default function Login(props) {
 <form id="login-form">
     <label for="username">Username</label>
     <input id="username" name="username" type="text">
-    <label for="password">Password</label>
-    <input id="password" name="password" type="password">
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email">
     <input id="login-btn" type="submit" value="Log In">
 </form>
 <h1>or login with google</h1>
