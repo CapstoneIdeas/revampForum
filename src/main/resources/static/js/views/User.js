@@ -86,7 +86,7 @@ function generatePostsHTML(posts) {
                     <div class="card-content-box">
                         <p class="text-blk blog-title">${post?.title}</p>
                         <p class="text-blk blog-author">${post?.author?.userName}</p>
-                        <p class="text-blk blog-category">${post?.category}</p>
+                        <p class="text-blk blog-category">${post?.category.name}</p>
                         <p class="text-blk blog-content">${post?.content}</p>
                         <div class="card-btn-box">
                             <button data-id=${post.id} class="button btn-primary editPost">Edit</button>
