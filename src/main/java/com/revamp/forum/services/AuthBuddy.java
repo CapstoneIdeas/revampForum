@@ -2,6 +2,7 @@ package com.revamp.forum.services;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.revamp.forum.data.User;
+import com.revamp.forum.data.UserRole;
 import com.revamp.forum.repositories.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.time.LocalDate;
 import java.util.Collections;
 
 @Service
@@ -35,10 +37,16 @@ public class AuthBuddy {
         String email = fields[0];
         User user = usersRepository.findByEmail(email);
         if(user == null) {
-            System.out.println("User not found: " + email);
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Unauthorized");
+            user = new User();
+            user.setEmail(email);
+            user.setUserName(email);
+            user.setRole(UserRole.USER);
+            user.setCreatedAt(LocalDate.now());
+//            System.out.println("User not found: " + email);
+//            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Unauthorized");
+            user = usersRepository.save(user);
         }
-//        user.setProfilePic(fields[1]);
+        user.setProfilePic(fields[1]);
         return user;
     }
 

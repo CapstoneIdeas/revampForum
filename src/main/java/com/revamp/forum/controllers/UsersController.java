@@ -40,6 +40,9 @@ import java.util.Optional;
                 UserFetchDTO userDTO = new UserFetchDTO();
                 userDTO.setId(user.getId());
                 userDTO.setUserName(user.getUserName());
+                userDTO.setEmail(user.getEmail());
+                userDTO.setRole(user.getRole());
+                userDTO.setProfilePic(user.getProfilePic());
                 userDTOs.add(userDTO);
             }
             return userDTOs;
@@ -67,6 +70,13 @@ import java.util.Optional;
             newUser.setProfilePic(newUser.getProfilePic());
             newUser.setUserName(newUser.getUserName());
             newUser.setCreatedAt(LocalDate.now());
+            usersRepository.save(newUser);
+        }
+        @PostMapping("")
+        public void create(@RequestParam(name = "email") String email, @RequestParam(name = "username") String username){
+            User newUser = new User();
+            newUser.setUserName(username);
+            newUser.setEmail(email);
             usersRepository.save(newUser);
         }
         @DeleteMapping("/{id}")

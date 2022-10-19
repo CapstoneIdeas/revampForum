@@ -14,7 +14,7 @@ export default function PostIndex(props) {
                 type="text"
                 name="searchBar"
                 id="searchBar"
-                placeholder="search for a character"
+                placeholder="Search for a Post"
                 />
             </div>
         </header>
@@ -23,7 +23,9 @@ export default function PostIndex(props) {
             <h4 class="heading">Recent Post</h4>
               
             <div class = "wrapper">
+
               ${postsHTML}   
+              
             </div>
             
         </main>
@@ -41,23 +43,49 @@ function generatePostsHTML(posts) {
             }
             categories += post.categories[j].name;
         }
-        postsHTML += `   
-         
-     
 
+        postsHTML += `   
         <div id="container">
             <div class="row">
                 <div class="column">
                     <div class="product-details">
                         <h1>${post?.title}</h1>
+                        <div class="text">
                         <p class="information">${post?.content}</p>
+                        </div>
+                        
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop-${i}">
+                          Read more
+                        </button>
+                       
+                        <!-- Modal -->
+                        <div class="modal fade " id="staticBackdrop-${i}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <!--  div below has the scroll  -->
+                          <div class="modal-dialog  modal-dialog-scrollable">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel">${post?.title}</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">
+                              <p> ${post?.content} </p>
+                              </div>
+                              <div class="modal-footer">
+                                
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+    
                     </div>
                 </div>
             </div>
         </div>
-        
+      
       `;
     }
+
     postsHTML += `</tbody></table>`;
     return postsHTML;
 }
@@ -68,18 +96,16 @@ export function postSetup() {
 
 function search() {
     const divcards = document.querySelectorAll('.column')
-    console.log(divcards)
+
 
     const searchBar = document.getElementById('searchBar');
     searchBar.addEventListener('keyup', function (event){
-        // console.log(event.key)
         const keylogger = searchBar.value.toLowerCase();
-        console.log(keylogger)
+
 
         divcards.forEach((divcard) => {
-            console.log(divcard.firstElementChild.firstElementChild);
             let content = divcard.firstElementChild.firstElementChild.innerText;
-            console.log(content);
+
             if(content.toLowerCase().startsWith(keylogger)) {
                 divcard.style.display = "block";
             } else {
@@ -87,7 +113,5 @@ function search() {
             }
 
         });
-
-
     });
 }
