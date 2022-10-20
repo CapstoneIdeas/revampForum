@@ -5,8 +5,10 @@ let posts;
 export default function PostIndex(props) {
    const postsHTML = generatePostsHTML(props.posts);
     posts = props.posts
+    // console.log(props.posts);
     return `
        <header>
+       
             <h1>Posts Page</h1>
             
             <div id="searchWrapper">
@@ -17,12 +19,47 @@ export default function PostIndex(props) {
                 placeholder="Search for a Post"
                 />
             </div>
+             <div >
+<!--                            <label for="category">Category</label>-->
+<!--                                <div class="radio-toolbar">-->
+<!--                                    <input type="radio" id="radioDataScience" name="radioCategory" value="dataScience">-->
+<!--                                    <label for="radioDataScience">Data Science</label>-->
+
+<!--                                    <input type="radio" id="radioGenerativeArt" name="radioCategory" value="generativeArt">-->
+<!--                                    <label for="radioGenerativeArt">Generative Art</label>-->
+
+<!--                                    <input type="radio" id="radioLanguages" name="radioCategory" value="language">-->
+<!--                                    <label for="radioLanguages">Languages</label>-->
+<!--                                    -->
+<!--                                    <input type="radio" id="radioUiUxDesign" name="radioCategory" value="radioUiUxDesign">-->
+<!--                                    <label for="radioUiUxDesign">UI/UX Design</label>-->
+
+<!--                                    <input type="radio" id="radioWebDevelopment" name="radioCategory" value="webDevelopment">-->
+<!--                                    <label for="radioWebDevelopment">Web Development</label>-->
+<!--                                </div>     -->
+<!--                        </div>-->
+                        <div class ="btn-container">
+                        <button class="filter-btn" type="button" data-id="all"> all</button>
+                        
+                        <button class="filter-btn" type="button" data-id="DATA_SCIENCE"> Data Science</button>
+                        
+                        <button class="filter-btn" type="button" data-id="GENERATIVE_ART"> Generative Art</button>
+                        
+                        <button class="filter-btn" type="button" data-id="LANGUAGES"> Languages</button>
+                        
+                        <button class="filter-btn" type="button" data-id="UIUX_DESIGN"> Uiux Design</button>
+                       
+                        <button class="filter-btn" type="button" data-id="WEB_DEVELOPMET"> Web Development</button>
+</div>
+                        
+                        
         </header>
         
         <main>
             <h4 class="heading">Recent Post</h4>
               
             <div class = "wrapper">
+            
 
               ${postsHTML}   
               
@@ -42,17 +79,22 @@ function generatePostsHTML(posts) {
                 categories += ", ";
             }
             categories += post.categories[j].name;
+
+
+
         }
 
         postsHTML += `   
         <div id="container">
             <div class="row">
+            
                 <div class="column">
                     <div class="product-details">
                         <h1>${post?.title}</h1>
                         <div class="text">
                         <p class="information">${post?.content}</p>
                         </div>
+                        
                         
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop-${i}">
@@ -70,9 +112,11 @@ function generatePostsHTML(posts) {
                               </div>
                               <div class="modal-body">
                               <p> ${post?.content} </p>
+                               <p> ${post?.category.name}</p> 
+                              
                               </div>
                               <div class="modal-footer">
-                                
+                                <H4> By : ${post?.author?.userName}</H4>
                               </div>
                             </div>
                           </div>
@@ -92,6 +136,7 @@ function generatePostsHTML(posts) {
 
 export function postSetup() {
         search();
+        filterByCatgories()
 }
 
 function search() {
@@ -114,4 +159,28 @@ function search() {
 
         });
     });
+}
+
+function filterByCatgories() {
+const filterBtns = document.querySelectorAll('.filter-btn')
+
+   filterBtns.forEach(function (btn) {
+       btn.addEventListener('click',function (e) {
+
+           const category = e.currentTarget.dataset.id;
+
+           const codeCategory = posts.filter(function (postItem) {
+               console.log(postItem.category);
+
+
+               if (postItem.category === category){
+                   return postItem
+               }
+
+
+           });
+           console.log(codeCategory);
+       })
+   })
+
 }
