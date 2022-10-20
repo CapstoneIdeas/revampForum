@@ -4,23 +4,22 @@ body{
 	background-color: #e9d8a6ff;
 }
 
-/* MAIN CONTAINERS */
+/* MAIN CONTAINER */
 .userContainer {
-	display: flex;
-	height: 90%;
-	margin: 0 100px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   height: 100%;
+   gap: 40px;
 }
+
+/* USER INFO */
 .userLeftDiv {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	width: 600px;
 }
-.userRightDiv {
-	width: 600px;
-}
-
-/* USER IMAGE*/
 .userInfoDiv{
 	background-color: #c6bb99ff;
 	border-radius: 20px;
@@ -64,16 +63,6 @@ h2 {
 	padding: 0;
 	margin-bottom: 20px;
 }
-@media screen and (min-width: 700px) {
-	.large-group {
-		display: flex;
-    	flex-wrap: wrap;
-    	justify-content: space-between;
-	}
-	.small-group {
-		width: 45%;
-	}
-}
 label {
 	display: block;
 	margin-bottom: 5px;
@@ -96,6 +85,10 @@ input, select {
 }
 .radio-toolbar {
 	margin: 0px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
 }
 .radio-toolbar input[type="radio"] {
 	opacity: 0;
@@ -104,43 +97,33 @@ input, select {
 }
 .radio-toolbar label {
 	display: inline-block;
+	text-align: center;
 	padding: 10px 17px;
 	font-family: 'Nunito', sans-serif;
-	font-size: 14px;
+	font-weight: bold;
+	font-size: 13px;
 	border-radius: 25px;
 	margin-right: 3px;
 	margin-bottom: 5px;
 }
 .radio-toolbar label[for="radioDataScience"] {
-	display: inline-block;
 	background-color: #ae2012ff;
-	padding: 10px 17px;
 	border: 2px solid #ae2012ff;
 }
 .radio-toolbar label[for="radioGenerativeArt"] {
-	display: inline-block;
 	background-color: #ca6702ff;
-	padding: 10px 17px;
 	border: 2px solid #ca6702ff;
 }
 .radio-toolbar label[for="radioLanguages"] {
-	display: inline-block;
 	background-color: #ee9b00ff;
-	padding: 10px 17px;
 	border: 2px solid #ee9b00ff;
 }
 .radio-toolbar label[for="radioUiUxDesign"] {
-	display: inline-block;
 	background-color: #0a9396ff;
-	padding: 10px 17px;
-	font-size: 16px;
 	border: 2px solid #0a9396ff;
 }
 .radio-toolbar label[for="radioWebDevelopment"] {
-	display: inline-block;
 	background-color: #005f73ff;
-	padding: 10px 17px;
-	font-size: 16px;
 	border: 2px solid #005f73ff;
 }
 .radio-toolbar label:hover {
@@ -183,8 +166,23 @@ textarea {
 .btn:hover {
     background-color: #e2e2e2;
 }
+@media screen and (min-width: 700px) {
+	.large-group {
+		display: flex;
+    	flex-direction: column;
+    	justify-content: space-between;
+	}
+	.small-group {
+		width: 75%;
+	}
+}
 
-/* POST HISTORY */
+/* USER POST HISTORY */
+.userRightDiv {
+	display: flex;
+	flex-direction: column;
+	width: 600px;
+}
 .userPostHistory {
 	background-color: #c6bb99ff;
 	border-radius: 20px;
@@ -192,6 +190,7 @@ textarea {
 	-moz-box-shadow: 5px 5px 20px 0px rgba(173,173,173,1);
 	box-shadow: 5px 5px 20px 0px rgba(173,173,173,1);
 	padding: 1.5em;
+	overflow-y: auto;
 	@media screen and (min-width: 768px) {
 		padding: 2.5em;
 	}
@@ -205,6 +204,7 @@ textarea {
     padding-left:16px;
     box-shadow:rgba(95, 95, 95, 0.1) 6px 12px 24px;
     border-radius: 15px;
+	margin: 20px;
 }
 .img-category-box{
     max-width:130px;
@@ -245,8 +245,7 @@ textarea {
 	right: 0%;
 	height: 100%;
 	width: 6rem;
-	background-image: linear-gradient(
-		to right, transparent, white);
+	background-image: linear-gradient(to right, transparent, white);
 	pointer-events: none;
 }
 .blog-card-btn-box{
