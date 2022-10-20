@@ -9,7 +9,7 @@ export default function Navbar(props) {
     html += `<a class="jalopy-nav" href="/about" data-link>About</a>`;
     if(loggedIn) {
         html += `
-            <a class="jalopy-nav" href="/posts" data-link>Posts</a>
+           
             <a class="jalopy-nav" href="/user" id="user" data-user-id="${userId.id}" data-link>User</a>
             <a class="jalopy-nav" href="/logout" data-link>Logout</a>`;
     } else {

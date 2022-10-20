@@ -14,11 +14,13 @@ import prepareUserHTML, {blogSetup} from "./views/User.js"
 export default function router(URI) {
     const routes = {
         '/': {
-            returnView: Home,
-            state: {},
+            returnView: PostIndex,
+            state: {
+                posts: '/api/posts'
+            },
             uri: '/',
             title: 'Home',
-            viewEvent: HomeEvents
+            viewEvent: postSetup
         },
         '/login': {
             returnView: Login,
