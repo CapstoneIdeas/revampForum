@@ -19,39 +19,21 @@ export default function PostIndex(props) {
                 placeholder="Search for a Post"
                 />
             </div>
-             <div >
-<!--                            <label for="category">Category</label>-->
-<!--                                <div class="radio-toolbar">-->
-<!--                                    <input type="radio" id="radioDataScience" name="radioCategory" value="dataScience">-->
-<!--                                    <label for="radioDataScience">Data Science</label>-->
 
-<!--                                    <input type="radio" id="radioGenerativeArt" name="radioCategory" value="generativeArt">-->
-<!--                                    <label for="radioGenerativeArt">Generative Art</label>-->
-
-<!--                                    <input type="radio" id="radioLanguages" name="radioCategory" value="language">-->
-<!--                                    <label for="radioLanguages">Languages</label>-->
-<!--                                    -->
-<!--                                    <input type="radio" id="radioUiUxDesign" name="radioCategory" value="radioUiUxDesign">-->
-<!--                                    <label for="radioUiUxDesign">UI/UX Design</label>-->
-
-<!--                                    <input type="radio" id="radioWebDevelopment" name="radioCategory" value="webDevelopment">-->
-<!--                                    <label for="radioWebDevelopment">Web Development</label>-->
-<!--                                </div>     -->
-<!--                        </div>-->
-                        <div class ="btn-container">
+                 <div class ="btn-container">
                         <button class="filter-btn" type="button" data-id="all"> all</button>
                         
-                        <button class="filter-btn" type="button" data-id="DATA_SCIENCE"> Data Science</button>
+                        <button class="filter-btn" type="button" data-id="1"> Data Science</button>
                         
-                        <button class="filter-btn" type="button" data-id="GENERATIVE_ART"> Generative Art</button>
+                        <button class="filter-btn" type="button" data-id="2"> Generative Art</button>
                         
-                        <button class="filter-btn" type="button" data-id="LANGUAGES"> Languages</button>
+                        <button class="filter-btn" type="button" data-id="3"> Languages</button>
                         
-                        <button class="filter-btn" type="button" data-id="UIUX_DESIGN"> Uiux Design</button>
+                        <button class="filter-btn" type="button" data-id="4"> Uiux Design</button>
                        
-                        <button class="filter-btn" type="button" data-id="WEB_DEVELOPMET"> Web Development</button>
-</div>
-                        
+                        <button class="filter-btn" type="button" data-id="5"> Web Development</button>
+                </div>
+              
                         
         </header>
         
@@ -81,8 +63,8 @@ function generatePostsHTML(posts) {
             categories += post.categories[j].name;
 
 
-
         }
+
 
         postsHTML += `   
         <div id="container">
@@ -136,7 +118,7 @@ function generatePostsHTML(posts) {
 
 export function postSetup() {
         search();
-        filterByCatgories()
+        filterByCategories()
 }
 
 function search() {
@@ -161,21 +143,27 @@ function search() {
     });
 }
 
-function filterByCatgories() {
+function filterByCategories() {
 const filterBtns = document.querySelectorAll('.filter-btn')
 
    filterBtns.forEach(function (btn) {
        btn.addEventListener('click',function (e) {
-
+           const button = parseInt(this.getAttribute("data-id")) ;
+           console.log(typeof(button));
            const category = e.currentTarget.dataset.id;
 
            const codeCategory = posts.filter(function (postItem) {
-               console.log(postItem.category);
+               // console.log(postItem.category);
+               // console.log(postItem.category.id);
 
 
-               if (postItem.category === category){
-                   return postItem
+               if (button === "all"){
+                return postItem
+
                }
+              return button === postItem?.category.id;
+
+
 
 
            });
