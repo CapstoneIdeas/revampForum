@@ -3,4 +3,4 @@
 const FRONTEND_VERSION = 3.7;
 const APP_TITLE = "CYPHER";
 const SKIP_STALE_TOKEN_CHECK = true;
-const LINK = `www.cypher.com`;
+const LINK = `cypher.deskmc.com`;
