@@ -5,8 +5,10 @@ let posts;
 export default function PostIndex(props) {
    const postsHTML = generatePostsHTML(props.posts);
     posts = props.posts
+    // console.log(props.posts);
     return `
        <header>
+       
             <h1>Posts Page</h1>
             
             <div id="searchWrapper">
@@ -17,12 +19,29 @@ export default function PostIndex(props) {
                 placeholder="Search for a Post"
                 />
             </div>
+                                        <!-- buttons for the filter    -->
+                 <div class ="btn-container">
+                        <button class="filter-btn" type="button" data-id="all"> all</button>
+                        
+                        <button class="filter-btn" type="button" data-id="1"> Data Science</button>
+                        
+                        <button class="filter-btn" type="button" data-id="2"> Generative Art</button>
+                        
+                        <button class="filter-btn" type="button" data-id="3"> Languages</button>
+                        
+                        <button class="filter-btn" type="button" data-id="4"> Uiux Design</button>
+                       
+                        <button class="filter-btn" type="button" data-id="5"> Web Development</button>
+                </div>
+              
+                        
         </header>
         
         <main>
             <h4 class="heading">Recent Post</h4>
               
             <div class = "wrapper">
+            
 
               ${postsHTML}   
               
@@ -42,17 +61,22 @@ function generatePostsHTML(posts) {
                 categories += ", ";
             }
             categories += post.categories[j].name;
+
+
         }
+
 
         postsHTML += `   
         <div id="container">
             <div class="row">
+            
                 <div class="column">
                     <div class="product-details">
                         <h1>${post?.title}</h1>
                         <div class="text">
                         <p class="information">${post?.content}</p>
                         </div>
+                        
                         
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop-${i}">
@@ -70,9 +94,11 @@ function generatePostsHTML(posts) {
                               </div>
                               <div class="modal-body">
                               <p> ${post?.content} </p>
+                               <p> ${post?.category.name}</p> 
+                              
                               </div>
                               <div class="modal-footer">
-                                
+                                <H4> By : ${post?.author?.userName}</H4>
                               </div>
                             </div>
                           </div>
@@ -92,6 +118,7 @@ function generatePostsHTML(posts) {
 
 export function postSetup() {
         search();
+        filterByCategories()
 }
 
 function search() {
@@ -114,4 +141,34 @@ function search() {
 
         });
     });
+}
+
+function filterByCategories() {
+const filterBtns = document.querySelectorAll('.filter-btn')
+
+   filterBtns.forEach(function (btn) {
+       btn.addEventListener('click',function (e) {
+           const button = parseInt(this.getAttribute("data-id")) ;
+           console.log(typeof(button));
+           const category = e.currentTarget.dataset.id;
+
+           const codeCategory = posts.filter(function (postItem) {
+               // console.log(postItem.category);
+               // console.log(postItem.category.id);
+
+
+               if (button === "all"){
+                return postItem
+
+               }
+              return button === postItem?.category.id;
+
+
+
+
+           });
+           console.log(codeCategory);
+       })
+   })
+
 }
