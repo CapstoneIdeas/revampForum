@@ -8,6 +8,8 @@ export default function prepareUserHTML(props) {
     
     loggedInUser = getUser();
     console.log(loggedInUser);
+    let username = loggedInUser.email.split('@')
+    // console.log(username[0]);
     const postsHTML = generatePostsHTML(props.posts);
     posts = props.posts
     return `
@@ -22,7 +24,7 @@ export default function prepareUserHTML(props) {
                         <img src= "${loggedInUser.profilePic}" class="user-img">
                     </div> 
                     <div class='usernameDiv'>
-                        <p class='username-header'>Username</p>
+                        <p class='username-header'>${username[0]}</p>
                     </div>
                 </div>
                 <!-- ADD NEW POST FORM --!>
