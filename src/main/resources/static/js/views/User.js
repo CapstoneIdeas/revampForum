@@ -12,14 +12,18 @@ export default function prepareUserHTML(props) {
     posts = props.posts
     return `
     <header>
-        <h2>User Blog</h2>
     </header>
     <main>
         <div class= 'userContainer'>
             <div class= 'userLeftDiv'>
                 <!-- USER PFP --!>
                 <div class= 'userInfoDiv'>
-                    <img src= "${loggedInUser.profilePic}" class="user-img">
+                    <div class='userImgDiv'>
+                        <img src= "${loggedInUser.profilePic}" class="user-img">
+                    </div> 
+                    <div class='usernameDiv'>
+                        <p class='username-header'>Username</p>
+                    </div>
                 </div>
                 <!-- ADD NEW POST FORM --!>
                 <div class= 'newPostDiv'>
@@ -55,16 +59,18 @@ export default function prepareUserHTML(props) {
                             <label for="content">Content</label>
                             <textarea id="content" type="text" name="content" placeholder="Enter some subject matter..."></textarea>
                         </div>
-                            <input id="addPost" class="btn" type="submit" name="addPost"/>
+                            <input id="addPost" class="submit-btn" type="submit" name="addPost"/>
                     </div>
                 </form>
                 </div>
             </div>
             <!-- USER POST HISTORY --!>
             <div class= 'userRightDiv'>
-                <div class= 'userPostHistory'>
-                    <h3>Blog History</h3> 
-                    ${postsHTML} 
+                <div class='userPostHistory'>
+                    <h3 class='blog-history-header'>Blog History</h3> 
+                    <div class='scrollableDiv'> 
+                        ${postsHTML} 
+                    </div>
                  </div>
             </div>
         </div>
@@ -88,14 +94,14 @@ function generatePostsHTML(posts) {
                 <div class="blogCard">
                     <div class="img-category-box">
                         <img src="../assets/denzel.jpg"class="category-img" />
+                        <p class="blog-category">${post?.category.name}</p>
                     </div>
                     <div class="blog-card-content-box">
                         <p class="text-blk blog-title">${post?.title}</p>
                         <p class="text-blk blog-author"><i>posted by</i> <b>${post?.author?.userName}</b></p>
-                        <p class="text-blk blog-category"><i>posted to</i> <b>${post?.category.name}</b></p>
                         <p class="text-blk blog-content">${post?.content}</p>
+                        
                         <div class="blog-card-btn-box">
-
                         <!-- BOOTSTRAP CRUD BUTTONS --!>
                             <button type="button" class="btn btn-primary readPost" data-bs-toggle="modal" data-bs-target="#readModal-${i}">Read More</button>
                             <button type="button" class="btn btn-primary updatePost" data-bs-toggle="modal" data-bs-target="#editModal-${i}" data-id=${post.id}>Edit</button>
@@ -166,10 +172,13 @@ export function blogSetup() {
 // CREATE A BLOG POST
 function addPostHandler(){
     const addButton = document.querySelector("#addPost")
+    
     addButton.addEventListener("click", function (event) {
+        
         const titleField =  document.querySelector("#title");
         const contentField = document.querySelector("#content");
         const checkedCategory = document.querySelector("input[name=radioCategory]:checked");
+        
         if(isLoggedIn()){
         if((titleField.value === "") || (contentField.value === "")) {
             console.log("Content required");
@@ -207,8 +216,6 @@ function editPostHandlers() {
         saveButtons[i].addEventListener("click", function(e) {
             
             const postId = this.getAttribute("data-id");
-            console.log(postId + " will be saved");
-
             const titleInput =  document.querySelector("#titleInput-" + postId);
             const editedTitle = titleInput.value.trim();
             const selectedCategory = document.querySelector("#editCategory-" + postId).value;
@@ -238,38 +245,7 @@ function editPostHandlers() {
             }
             }
         })
-
     }
-
-    // for (let i = 0; i < editButtons.length; i++) {
-    //     editButtons[i].addEventListener("click", function(event) {
-            
-    //         const titleField =  document.querySelector("#title");
-    //         const contentField = document.querySelector("#content");
-
-    //         console.log(editButtons[i].getAttribute("data-id") + " will be edited");
-
-    //         if(isLoggedIn()){
-    //             if((titleField.value === "") || (contentField.value === "")) {
-    //                 console.log("Content required");
-    //             }else{
-    //             let updatePost = {
-    //                 title: titleField.value,
-    //                 category: {id:selectedCategory.value},
-    //                 content: contentField.value,
-    //             }
-    //             let request = {
-    //                 method: "PUT",
-    //                 headers: getHeaders(),
-    //                 body: JSON.stringify(updatePost)
-    //             }
-    //             let url = `http://localhost:8080/api/posts/${editButtons[i].getAttribute("data-id")}`;
-    //             fetch(url, request).then(response => response.json());
-    //             location.reload();
-    //         }}else{
-    //         console.log("Login required");
-    //     }});
-    // }
 }
 
 // DELETE A BLOG POST
@@ -286,7 +262,6 @@ function deletePostHandlers() {
             let url = `http://localhost:8080/api/posts/${deleteButtons[i].getAttribute("data-id")}`
             fetch(url, request).then(response => response.json());
             location.reload();
-
         }else{
             console.log("Login required");
         }});

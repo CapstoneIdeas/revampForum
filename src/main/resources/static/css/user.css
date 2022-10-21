@@ -10,7 +10,7 @@ body{
    align-items: center;
    justify-content: center;
    height: 100%;
-   gap: 40px;
+   column-gap: 3em;
 }
 
 /* USER INFO */
@@ -19,8 +19,12 @@ body{
 	flex-direction: column;
 	align-items: center;
 	width: 600px;
+	row-gap: 2.5em;
 }
 .userInfoDiv{
+	display: flex;
+	width: 100%;
+	height: 170px;
 	background-color: #c6bb99ff;
 	border-radius: 20px;
 	-webkit-box-shadow: 5px 5px 20px 0px rgba(173,173,173,1);
@@ -33,14 +37,25 @@ body{
 }
 .user-img{
 	border: 5px;
-	border-radius: 20px;
+	border-radius: 15px;
+	height: 125px;
+	width:125px;
+}
+.usernameDiv{
+	margin-top: auto;
+	margin-left: 1em;
+}
+.username-header{
+	font-family: 'Nunito', sans-serif;
+	font-weight: 700;
+	font-size: 45px;
 }
 
 /* NEW POST FORM */
 .newPostDiv {
 	margin: 0;
-	height: 100%;
-	padding: 1.5em;
+	width: 100%;
+	/* padding: 1.5em; */
 	@media screen and (min-width: 768px) {
 		padding: 3em;
 	}
@@ -150,9 +165,9 @@ textarea {
 	background-color: #e2e2e2;
 	font-size: 14px;
     font-family: 'Roboto', sans-serif;
-	height: 100px;
+	height: 150px;
 }
-.btn { 
+.submit-btn { 
 	background-color: rgb(176, 155, 120);
 	padding: 12px 15px;
 	width: 100%;
@@ -163,7 +178,7 @@ textarea {
 	border-radius: 20px;
 	transition: 0.3s all ease;
 }
-.btn:hover {
+.submit-btn:hover {
     background-color: #e2e2e2;
 }
 @media screen and (min-width: 700px) {
@@ -178,33 +193,46 @@ textarea {
 }
 
 /* USER POST HISTORY */
-.userRightDiv {
+.userRightDiv{
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
 	width: 600px;
 }
-.userPostHistory {
+.userPostHistory{
+	display: flex;
+	flex-direction: column;
 	background-color: #c6bb99ff;
 	border-radius: 20px;
+	padding: 1.5em;
 	-webkit-box-shadow: 5px 5px 20px 0px rgba(173,173,173,1);
 	-moz-box-shadow: 5px 5px 20px 0px rgba(173,173,173,1);
 	box-shadow: 5px 5px 20px 0px rgba(173,173,173,1);
-	padding: 1.5em;
-	overflow-y: auto;
 	@media screen and (min-width: 768px) {
 		padding: 2.5em;
 	}
 }
+.blog-history-header{
+	padding-bottom: 5px;
+	margin: 10px;
+}
+.scrollableDiv{
+	display: flex;
+	flex-direction: column;
+	overflow-y: auto;
+	max-height: 700px;
+}
 .blogCard{
     display: flex;
 	background-color:rgb(255, 255, 255);
-    padding-top:16px;
-    padding-right:16px;
-    padding-bottom:16px;
-    padding-left:16px;
+    padding: 16px;
     box-shadow:rgba(95, 95, 95, 0.1) 6px 12px 24px;
     border-radius: 15px;
-	margin: 20px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	margin-left: 10px;
+	margin-right: 15px;
+	height: 200px;
 }
 .img-category-box{
     max-width:130px;
@@ -220,33 +248,26 @@ textarea {
     height:100%;
     border-radius:15px;
 }
+.blog-category{
+	font-size: 10px;
+	line-height: normal;
+}
 .blog-card-content-box{
     display:flex;
     flex-direction:column;
-    justify-content:center;
 }
 .blog-content{
+	position: relative;
 	font-family: 'Roboto', sans-serif;
 	font-size: 14px;
-	width: 18rem;
-	overflow: hidden;
-	text-overflow: clip;
-	position: relative;
+	width: 21rem;
+	height: 80px;
 	/* DISPLAY ONLY FIVE LINES OF TEXT*/
+	overflow: hidden;
+	text-overflow: ellipsis;
 	display: -webkit-box;
-	-webkit-line-clamp: 5;
-			line-clamp: 5; 
+	-webkit-line-clamp: 4;
 	-webkit-box-orient: vertical;
-}
-.blog-content::after{
-	/* FADE OUT lAST LINE OF TEXT*/
-	content: '';
-	position: absolute;
-	right: 0%;
-	height: 100%;
-	width: 6rem;
-	background-image: linear-gradient(to right, transparent, white);
-	pointer-events: none;
 }
 .blog-card-btn-box{
     display: flex;
@@ -254,14 +275,38 @@ textarea {
 .blog-title{
 	font-weight: 500;
 	font-size: 22px;
+	text-transform: uppercase;
+	padding-bottom: 7px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	max-width: 21ch;
+	/* display: -webkit-box;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical; */
 }
 .blog-author{
 	font-size: 12px;
 	line-height: normal;
+	padding-bottom: 7px;
 }
-.blog-category{
+.btn { 
+	background-color: rgb(176, 155, 120);
 	font-size: 12px;
-	line-height: normal;
+	font-weight: 700;
+	text-transform: uppercase;
+	border: 1px solid transparent;
+	border-radius: 20px;
+	transition: 0.3s all ease;
+}
+.btn:hover {
+    background-color: #e2e2e2;
+	border-color: transparent;
+}
+.blog-card-btn-box{
+	display: flex;
+	justify-content:flex-end;
+	margin-top: 5px;
 }
 
 
