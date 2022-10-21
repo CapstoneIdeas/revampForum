@@ -19,7 +19,7 @@ export default function PostIndex(props) {
                 placeholder="Search for a Post"
                 />
             </div>
-
+                                        <!-- buttons for the filter    -->
                  <div class ="btn-container">
                         <button class="filter-btn" type="button" data-id="all"> all</button>
                         
