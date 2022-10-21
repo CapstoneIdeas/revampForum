@@ -58,8 +58,8 @@ export default function About(props) {
                                 <div class="card-content-box">
                                     <p class="text-blk person-name">Ben</p>
                                     <p class="text-blk person-info">
-                                    Codename: <br>
-                                    Top Category: <br>
+                                    Codename: Jiraiya<br>
+                                    Top Category: Web Development<br>
                                     Factorial:
                                     </p>
                                     <div class="card-link-box">
