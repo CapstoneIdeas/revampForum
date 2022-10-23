@@ -20,7 +20,7 @@ export default function prepareUserHTML(props) {
             <div class= 'userLeftDiv'>
                 <!-- USER PFP --!>
                 <div class= 'userInfoDiv'>
-                    <div class='userImgDiv'>
+                    <div class='user-img-box'>
                         <img src= "${loggedInUser.profilePic}" class="user-img">
                     </div> 
                     <div class='usernameDiv'>
@@ -80,7 +80,7 @@ export default function prepareUserHTML(props) {
     `;
 }
 
-// GENERATE TABLE OF POSTS WITH EDIT AND DELETE OPTION
+// GENERATE LIST OF POSTS WITH EDIT AND DELETE OPTION
 function generatePostsHTML(posts) {
     
     let postsHTML = ``;
@@ -96,8 +96,8 @@ function generatePostsHTML(posts) {
                 <div class="blogCard">
                     <div class="img-category-box">
                         <img src="../assets/denzel.jpg"class="category-img" />
-                        <p class="blog-category">${post?.category.name}</p>
-                    </div>
+                        <p class="text-blk blog-category">${post?.category.name}</p>
+                    </div>                    
                     <div class="blog-card-content-box">
                         <p class="text-blk blog-title">${post?.title}</p>
                         <p class="text-blk blog-author"><i>posted by</i> <b>${post?.author?.userName}</b></p>
