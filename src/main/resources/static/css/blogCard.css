@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800&family=Roboto:wght@300;400;500&display=swap');
+
+/* BLOG CARD */
+.blogCard{
+    display: flex;
+    background-color: rgb(255, 255, 255);
+    padding: 20px;
+    box-shadow: rgb(95 95 95 / 10%) 6px 12px 12px;
+    border-radius: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 10px;
+    margin-right: 15px;
+    height: 225px;
+    width: 530px;
+}
+
+/* CARD CATEGORY INFO */
+.img-category-box{
+    display: flex;
+	flex-direction: column;
+	max-width:130px;
+    max-height:130px;
+    width:100%;
+    height:100%;
+    margin-right:25px;
+}
+.category-img{
+	width:100%;
+    height:100%;
+	object-fit: cover;
+    border-radius:15px;
+}
+.blog-category{
+	margin: 10px;
+	font-size: 14px;
+	text-transform: uppercase;
+	justify-content: center;
+    align-self: center;
+}
+.text-blk.blog-category{
+    line-height: 1em;
+    text-align: center;
+    margin-top: 1.5em;
+    font-weight: 600;
+}
+
+/* BLOG CONTENT */
+.blog-card-content-box{
+    display:flex;
+    flex-direction:column;
+}
+.blog-content{
+	position: relative;
+	font-family: 'Roboto', sans-serif;
+	font-size: 14px;
+	width: 21rem;
+	height: 80px;
+	/* DISPLAY ONLY FIVE LINES OF TEXT*/
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 4;
+	-webkit-box-orient: vertical;
+}
+.blog-title{
+	font-weight: 500;
+	font-size: 22px;
+	text-transform: uppercase;
+	padding-bottom: 7px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	max-width: 21ch;
+}
+.blog-author{
+	font-size: 12px;
+	line-height: normal;
+	padding-bottom: 7px;
+}
+
+/* CARD BUTTONS */
+.blog-card-btn-box{
+    display: flex;
+	justify-content:flex-end;
+	margin-top: 18px;
+}
+.btn { 
+    background-color: rgb(176, 155, 120);
+	padding: 8px 16px;
+	font-size: 12px;
+	font-weight: 700;
+	text-transform: uppercase;
+	border: 1px solid transparent;
+	border-radius: 20px;
+	transition: 0.3s all ease;
+    margin-left: 5px;
+    margin-right:5px;
+}
+.btn-icon{
+	height: 16px;
+	width: 16px;
+    align-items: center;
+    justify-content: center;
+}
+.btn-primary{
+	color: #000;
+}
+.btn:hover {
+    background-color: #e2e2e2;
+	border-color: transparent;
+    color: #000;
+}
