@@ -3,11 +3,6 @@
     background-color: #e9d8a6ff;
 } */
 
-/* NAV MENU */
-nav a {
-    padding: 15px;
-}
-
 footer{
     text-align: center;
     margin-top: 200px;
@@ -154,6 +149,11 @@ main{
 .filter-btn[data-id="all"]{
 	background-color: rgb(176, 155, 120);
 	border: 2px solid rgb(176, 155, 120);
+}
+.filter-btn:hover {
+    background-color: #ece5da;
+    border-style: dotted;
+    color: #000;
 }
 
 /* BLOG POST LIST */

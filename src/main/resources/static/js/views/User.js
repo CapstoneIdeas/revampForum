@@ -9,7 +9,8 @@ export default function prepareUserHTML(props) {
     loggedInUser = getUser();
     console.log(loggedInUser);
     let username = loggedInUser.email.split('@')
-    // console.log(username[0]);
+    const imgAr = ['archer.png','elf.png','fairy.png','knight.png','wizard.png']
+    let userImg = getRandomImage(imgAr);
     const postsHTML = generatePostsHTML(props.posts);
     posts = props.posts
     return `
@@ -22,7 +23,7 @@ export default function prepareUserHTML(props) {
                 <!-- USER PFP --!>
                 <div class= 'userInfoDiv'>
                     <div class='user-img-box'>
-                        <img src= "${loggedInUser.profilePic}" class="user-img">
+                        <img src= "${userImg}" class="user-img">
                     </div> 
                     <div class='usernameDiv'>
                         <p class='username-header'>${username[0]}</p>
@@ -81,11 +82,20 @@ export default function prepareUserHTML(props) {
     `;
 }
 
+// GENERATE RANDOM USER IMAGE FROM ASSET FOLDER
+function getRandomImage(imgAr) {
+    const path = '../assets/users/';
+    let num = Math.floor( Math.random() * imgAr.length );
+    let img = imgAr[ num ];
+    // var imgStr = '<img src="' + path + img + '" alt = "user image">';
+    // document.write(imgStr); document.close();
+    return (path + img);
+}
+
 // GENERATE LIST OF POSTS WITH EDIT AND DELETE OPTION
 function generatePostsHTML(posts) {
     
     let postsHTML = ``;
-
     if(posts) {
         for (let i = 0; i < posts.length; i++) {
             const post = posts[i];
@@ -93,10 +103,27 @@ function generatePostsHTML(posts) {
             if(loggedInUser.id !== post.author.id) {
                 continue
             }
+            // POPULATE ASSOCIATED CATEGORY IMG WITH BLOG POST
+            let categoryImg = '../assets/denzel.jpg';
+            if(post.category.id === 1){
+                categoryImg = "../assets/data-science.png";
+            }
+            if(post.category.id === 2){
+                categoryImg = "../assets/generative-art.png";
+            }
+            if(post.category.id === 3){
+                categoryImg = "../assets/languages.png";
+            }
+            if(post.category.id === 4){
+                categoryImg = "../assets/ui-ux-design.png";
+            }
+            if(post.category.id === 5){
+                categoryImg = "../assets/web-development.png";
+            }
             postsHTML += `
                 <div class="blogCard">
                     <div class="img-category-box">
-                        <img src="../assets/denzel.jpg"class="category-img" />
+                        <img src="${categoryImg}" class="category-img" />
                         <p class="text-blk blog-category">${post?.category.name}</p>
                     </div>                    
                     <div class="blog-card-content-box">

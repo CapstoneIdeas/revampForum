@@ -64,10 +64,26 @@ function generatePostsHTML(posts) {
         //         }
         //         categories += post.categories[j].name;
         //     }
+        let categoryImg = '../assets/denzel.jpg';
+            if(post.category.id === 1){
+                categoryImg = "../assets/data-science.png";
+            }
+            if(post.category.id === 2){
+                categoryImg = "../assets/generative-art.png";
+            }
+            if(post.category.id === 3){
+                categoryImg = "../assets/languages.png";
+            }
+            if(post.category.id === 4){
+                categoryImg = "../assets/ui-ux-design.png";
+            }
+            if(post.category.id === 5){
+                categoryImg = "../assets/web-development.png";
+            }
             postsHTML += `   
                 <div class="blogCard">
                     <div class="img-category-box">
-                        <img src="../assets/denzel.jpg"class="category-img" />
+                        <img src="${categoryImg}" class="category-img" />
                         <p class="text-blk blog-category">${post?.category.name}</p>
                     </div>
                     <div class="blog-card-content-box">
@@ -132,35 +148,36 @@ function search() {
 }
 
 function filterByCategories() {
-const filterBtns = document.querySelectorAll('.filter-btn')
+    const filterBtns = document.querySelectorAll('.filter-btn')
 
-   filterBtns.forEach(function (btn) {
-       btn.addEventListener('click',function (e) {
-           const button = this.getAttribute("data-id");
-           console.log(typeof(button));
-           const category = e.currentTarget.dataset.id;
-
-           const codeCategory = posts.filter(function (postItem) {
-               // console.log(postItem.category);
-               // console.log(postItem.category.id);
-
-
-               if (button === "all"){
-                return true;
-
-               }
-
-              return Number.parseInt(button) === postItem?.category.id;
-
-
-
-
-           });
-           console.log(codeCategory);
-           // render the codeCategory array to html
-           const filteredHTML = generatePostsHTML(codeCategory);
-           document.querySelector("#post-wrapper").innerHTML = filteredHTML;
-       })
-   })
-
+    filterBtns.forEach(function (btn) {
+        btn.addEventListener('click',function (e) {
+            const button = this.getAttribute("data-id");
+            console.log(typeof(button));
+            const category = e.currentTarget.dataset.id;
+            const codeCategory = posts.filter(function (postItem) {
+                if (button === "all"){
+                    return true;
+                }
+                return Number.parseInt(button) === postItem?.category.id;
+            });
+            console.log(codeCategory);
+            // render the codeCategory array to html
+            const filteredHTML = generatePostsHTML(codeCategory);
+            document.querySelector("#post-wrapper").innerHTML = filteredHTML;
+        })
+    })
 }
+
+// function selectCategoryImg() {
+//     const dataSci = posts.category.id(1)
+//     const genArt = posts.category.id(2)
+//     const language = posts.category.id(3)
+//     const uiuxDesign = posts.category.id(4)
+//     const webDev = posts.category.id(5)
+//     const categoryImg = query
+
+//     if(posts.category.id = 1){
+        
+//     }
+// }

@@ -1,0 +1,8 @@
+nav{
+    display: flex;
+    flex-direction: row-reverse;
+}
+nav a{
+    align-content: flex-end;
+    padding: 15px;
+}
