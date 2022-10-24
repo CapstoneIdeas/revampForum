@@ -14,6 +14,7 @@ export default function prepareUserHTML(props) {
     posts = props.posts
     return `
     <header>
+        <p class='userPageHeader'>Cipher.</p>
     </header>
     <main>
         <div class= 'userContainer'>
@@ -106,8 +107,8 @@ function generatePostsHTML(posts) {
                         <div class="blog-card-btn-box">
                         <!-- BOOTSTRAP CRUD BUTTONS --!>
                             <button type="button" class="btn btn-primary readPost" data-bs-toggle="modal" data-bs-target="#readModal-${i}">Read More</button>
-                            <button type="button" class="btn btn-primary updatePost" data-bs-toggle="modal" data-bs-target="#editModal-${i}" data-id=${post.id}>Edit</button>
-                            <button type="button" class="btn btn-primary deletePost" data-id=${post.id}>Trash</button>
+                            <button type="button" class="btn btn-primary updatePost" data-bs-toggle="modal" data-bs-target="#editModal-${i}" data-id=${post.id}><img src='../assets/edit.png' class='btn-icon'></button>
+                            <button type="button" class="btn btn-primary deletePost" data-id=${post.id}><img src='../assets/trash.png' class='btn-icon'></button>
                         </div>
 
                         <!-- BOOTSTRAP READ MORE MODAL --!>

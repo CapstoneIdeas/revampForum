@@ -5,33 +5,39 @@ let posts;
 export default function PostIndex(props) {
     const postsHTML = generatePostsHTML(props.posts);
     posts = props.posts
-    // console.log(props.posts);
     return `
-       <header>
-            <h1>Posts Page</h1>
-            <div id="searchWrapper">
-                <input type="text" name="searchBar" id="searchBar" placeholder="Search for a Post"/>
+        <header>
+        </header>
+        <main>
+            <div id="mainSearchDiv">
+                <p class="main-title">Cipher.</p>
+                <div id="searchWrapper">
+                    <input type="text" name="searchBar" id="searchBar" placeholder="Search for a post..."/>
+                </div>
             </div>
+            <!--
+            <div id="mainSearchDiv">
+                <div id="mainTitle">
+                    <p class="main-title">Cipher.</p>
+                </div>
+                <div id="searchWrapper">
+                    <input type="text" name="searchBar" id="searchBar" placeholder="Search for a post..."/>
+                </div>
+            </div>
+            --!>
             <!-- CATEGORY FILTER BUTTONS --!>
             <div class ="btn-container">
                 <button class="filter-btn" type="button" data-id="all"> all</button>
-                    
                 <button class="filter-btn" type="button" data-id="1"> Data Science</button>
-                    
                 <button class="filter-btn" type="button" data-id="2"> Generative Art</button>
-                    
                 <button class="filter-btn" type="button" data-id="3"> Languages</button>
-                    
-                <button class="filter-btn" type="button" data-id="4"> Uiux Design</button>
-                    
+                <button class="filter-btn" type="button" data-id="4"> UI/UX Design</button>
                 <button class="filter-btn" type="button" data-id="5"> Web Development</button>
-            </div>          
-        </header>
-        <main>
+            </div> 
             <!-- MAIN LIST OF SEARCHED POSTS --!>
             <div class='mainPostDiv'>
                 <div class='post-list'>
-                    <h4 class="main-post-header">Recent Post</h4>
+                    <h4 class="main-post-header">Browse all posts or select a category to cipher</h4>
                     <div id="post-wrapper" class = "wrapper">
                         ${postsHTML}   
                     </div>
@@ -49,10 +55,6 @@ function generatePostsHTML(posts) {
     if(posts) {
         for (let i = 0; i < posts.length; i++) {
             const post = posts[i];
-            // COMPARE LOGGED IN USER WITH POST USER ID
-            // if(loggedInUser !== post.author.id) {
-            //     continue
-            // }
         // for (let i = 0; i < posts.length; i++) {
         //     const post = posts[i];
         //     let categories = '';
