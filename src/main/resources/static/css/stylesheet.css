@@ -9,64 +9,55 @@ footer{
 }
 
 /* LOADING ANIMATION */
+.loader-body {
+    max-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .loader {
-    text-align: center;
-    margin-top: 15%;
-    margin-bottom: 20%;
-    /*background-color: mediumpurple;*/
+    width: 100px;
+    height: 90px;
 }
-.loader p {
-    display: inline-block;
-    text-transform: uppercase;
-    text-align: center;
-    font-size: 6em;
-    font-weight: 600;
-    transform: scale(.5);
-    color: #121212;
-    -webkit-text-stroke: 1px gray;
+.loader > div{
+    height: 100%;
+    width: 10px;
+    float: left;
+    animation: delay 0.9s infinite;
 }
-.loader  p:nth-child(1) {
-    animation: hover 2.5s linear infinite;
+.loader .bar1 {
+    background-color: #1f3f9c;
 }
-.loader  p:nth-child(2) {
-    animation: hover 2.5s linear infinite .125s;
+.loader .bar2 {
+    background-color: #42aeea;
+    animation-delay: -0.7s;
 }
-.loader  p:nth-child(3) {
-    animation: hover 2.5s linear infinite .25s;
+.loader .bar3 {
+    background-color: #008000;
+    animation-delay: -0.6s;
 }
-.loader  p:nth-child(4) {
-    animation: hover 2.5s linear infinite .375s;
+.loader .bar4 {
+    background-color: #ffdd00;
+    animation-delay: -0.5s;
 }
-.loader p:nth-child(5) {
-    animation: hover 2.5s linear infinite .5s;
+.loader .bar5 {
+    background-color: #f09800;
+    animation-delay: -0.4s;
 }
-.loader  p:nth-child(6) {
-    animation: hover 2.5s linear infinite .675s;
+.loader .bar6 {
+    background-color: #f80067;
+    animation-delay: -0.3s;
 }
-.loader  p:nth-child(7) {
-    animation: hover 2.5s linear infinite .75s;
-}
-@keyframes hover {
-    0% {
-        transform: scale(.5);
-        color: #121212;
-        -webkit-text-stroke: 2px gray;
+@keyframes delay {
+    0%,
+    40%,
+    100% {
+        transform: scaley(0.05);
     }
-
     20% {
-        transform: scale(1);
-        color: hotpink;
-        -webkit-text-stroke: 3px red;
-        filter: drop-shadow(0 0 1px black)drop-shadow(0 0 1px black)drop-shadow(0 0 3px red)drop-shadow(0 0 5px red)hue-rotate(10turn);
-    }
-
-    50% {
-        transform: scale(.5);
-        color: #121212;
-        -webkit-text-stroke: 2px gray;
+        transform: scaleY(1);
     }
 }
-
 /* MAIN PAGE STYLING */
 main{
     display: flex;
