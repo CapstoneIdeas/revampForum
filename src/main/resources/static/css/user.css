@@ -31,17 +31,21 @@ header{
 	display: flex;
 	width: 100%;
 	height: 170px;
-	background-color: #c6bb99ff;
+	background-color: #c6bb99;
 	border-radius: 20px;
-	-webkit-box-shadow: 5px 5px 20px 0px rgba(173,173,173,1);
-	-moz-box-shadow: 5px 5px 20px 0px rgba(173,173,173,1);
-	box-shadow: 5px 5px 20px 0px rgba(173,173,173,1);
+	-webkit-box-shadow: 5px 5px 20px 0px rgb(161, 153, 134);
+	-moz-box-shadow: 5px 5px 20px 0px rgb(161, 153, 134);
+	box-shadow: 5px 5px 20px 0px rgb(161, 153, 134);
 	padding: 1.5em;
 	@media screen and (min-width: 768px) {
 		padding: 2.5em;
 	}
 }
 .user-img-box{
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	align-items: center;
 	max-width:125px;
 	max-height:125px;
 	width:100%;
@@ -54,9 +58,8 @@ header{
 	margin-left:0px;
 }
 .user-img{
-	border-radius: 15px;
-	width:100%;
-	height:100%;
+	width:85%;
+	height:85%;
 }
 .usernameDiv{
 	margin-top: auto;
@@ -80,9 +83,9 @@ header{
 form {
 	background-color: #c6bb99ff;
 	border-radius: 20px;
-	-webkit-box-shadow: 5px 5px 20px 0px rgba(173,173,173,1);
-	-moz-box-shadow: 5px 5px 20px 0px rgba(173,173,173,1);
-	box-shadow: 5px 5px 20px 0px rgba(173,173,173,1);
+	-webkit-box-shadow: 5px 5px 20px 0px  rgb(161, 153, 134);
+	-moz-box-shadow: 5px 5px 20px 0px  rgb(161, 153, 134);
+	box-shadow: 5px 5px 20px 0px rgb(161, 153, 134);
 	padding: 1.5em;
 	@media screen and (min-width: 768px) {
 		padding: 2.5em;
@@ -223,9 +226,9 @@ textarea {
 	background-color: #c6bb99ff;
 	border-radius: 20px;
 	padding: 1.5em;
-	-webkit-box-shadow: 5px 5px 20px 0px rgba(173,173,173,1);
-	-moz-box-shadow: 5px 5px 20px 0px rgba(173,173,173,1);
-	box-shadow: 5px 5px 20px 0px rgba(173,173,173,1);
+	-webkit-box-shadow: 5px 5px 20px 0px rgb(161, 153, 134);
+	-moz-box-shadow: 5px 5px 20px 0px rgb(161, 153, 134);
+	box-shadow: 5px 5px 20px 0px rgb(161, 153, 134);
 	@media screen and (min-width: 768px) {
 		padding: 2.5em;
 	}

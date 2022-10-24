@@ -176,9 +176,9 @@ main{
     background-color: #c6bb99ff;
 	border-radius: 20px;
 	padding: 1.5em;
-	-webkit-box-shadow: 5px 5px 20px 0px rgba(173,173,173,1);
-	-moz-box-shadow: 5px 5px 20px 0px rgba(173,173,173,1);
-	box-shadow: 5px 5px 20px 0px rgba(173,173,173,1);
+	-webkit-box-shadow: 5px 5px 20px 0px rgb(161, 153, 134);
+	-moz-box-shadow: 5px 5px 20px 0px rgb(161, 153, 134);
+	box-shadow: 5px 5px 20px 0px rgb(161, 153, 134);
 	
 }
 .wrapper {
