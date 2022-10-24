@@ -126,7 +126,7 @@ export function postSetup() {
 }
 
 function search() {
-    const divcards = document.querySelectorAll('.column')
+    const divcards = document.querySelectorAll('.blogCard')
 
 
     const searchBar = document.getElementById('searchBar');
@@ -135,10 +135,10 @@ function search() {
 
 
         divcards.forEach((divcard) => {
-            let content = divcard.firstElementChild.firstElementChild.innerText;
+            let content = divcard.firstElementChild.nextElementSibling.innerText;
 
-            if(content.toLowerCase().startsWith(keylogger)) {
-                divcard.style.display = "block";
+            if(content.toLowerCase().match(keylogger)) {
+                divcard.style.display = "flex";
             } else {
                 divcard.style.display = "none";
             }
