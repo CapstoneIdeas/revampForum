@@ -14,6 +14,7 @@ export default function prepareUserHTML(props) {
     posts = props.posts
     return `
     <header>
+        <p class='userPageHeader'>Cipher.</p>
     </header>
     <main>
         <div class= 'userContainer'>
