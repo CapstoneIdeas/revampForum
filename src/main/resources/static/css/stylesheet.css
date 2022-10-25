@@ -13,7 +13,6 @@ footer{
     text-align: center;
     margin-top: 15%;
     margin-bottom: 20%;
-    /*background-color: mediumpurple;*/
 }
 .loader p {
     display: inline-block;
@@ -46,26 +45,26 @@ footer{
 .loader  p:nth-child(7) {
     animation: hover 2.5s linear infinite .75s;
 }
-@keyframes hover {
+/* @keyframes hover {
     0% {
         transform: scale(.5);
         color: #121212;
-        -webkit-text-stroke: 2px gray;
+        -webkit-text-stroke: 2px rgb(176, 155, 120);
     }
 
     20% {
         transform: scale(1);
-        color: hotpink;
-        -webkit-text-stroke: 3px red;
-        filter: drop-shadow(0 0 1px black)drop-shadow(0 0 1px black)drop-shadow(0 0 3px red)drop-shadow(0 0 5px red)hue-rotate(10turn);
+        color: rgb(255, 255, 255);
+        -webkit-text-stroke: 3px #ae2012ff;
+        filter: drop-shadow(0 0 1px black)drop-shadow(0 0 1px black)drop-shadow(0 0 3px #ca6702ff)drop-shadow(0 0 5px #ee9b00ff)hue-rotate(10turn);
     }
 
     50% {
         transform: scale(.5);
         color: #121212;
-        -webkit-text-stroke: 2px gray;
+        -webkit-text-stroke: 2px #0a9396ff;
     }
-}
+} */
 
 /* MAIN PAGE STYLING */
 main{
@@ -112,7 +111,7 @@ main{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    width: 75%;
+    width: 75vw;
     margin-top: 0px;
     margin-bottom:70px;
 }
@@ -120,12 +119,15 @@ main{
     display: inline-block;
 	text-align: center;
     text-transform: uppercase;
-	padding: 12px 20px;
+	padding: 12px 22px;
 	font-family: 'Nunito', sans-serif;
 	font-weight: bold;
 	font-size: 13px;
 	border-radius: 25px;
+    color: whitesmoke;
+    text-shadow: 1px 2px #000;
 }
+
 .filter-btn[data-id="1"]{
     background-color: #ae2012ff;
 	border: 2px solid #ae2012ff;
@@ -154,6 +156,7 @@ main{
     background-color: #ece5da;
     border-style: dotted;
     color: #000;
+    text-shadow: none;
 }
 
 /* BLOG POST LIST */
@@ -186,4 +189,27 @@ main{
     grid-template-columns: 50% 50%;
 	overflow-y: auto;
     /* max-height: ; */
+}
+
+/* MODALS */
+.modal-header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5em 1.5em;
+}
+/* .modal-title{} */
+.modal-body:not(.editModal){
+    padding: 1.5em 1.5em;
+}
+.modal-header > p{
+    text-align: center;
+    margin-bottom: 0;
+    /* margin-left: 5px; */
+    font-size: 22px;
+    font-weight: 500;
+}
+.modal-content{
+    border: transparent;
+    border-radius: 1em;
 }

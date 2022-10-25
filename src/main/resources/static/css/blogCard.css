@@ -111,3 +111,9 @@
 	border-color: transparent;
     color: #000;
 }
+.btn-check:focus+.btn-primary, .btn-primary:focus {
+    color: #fff;
+    background-color: #ece5da;
+    border-color: transparent;
+    box-shadow: 0 0 0 0.25rem rgb(176 155 120 / 50%);
+}

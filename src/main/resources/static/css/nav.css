@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800&family=Roboto:wght@300;400;500&display=swap');
 nav{
     display: flex;
-    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin-right: 120px;
 }
 nav a{
-    align-content: flex-end;
     padding: 15px;
+    color: #000;
 }

@@ -157,14 +157,15 @@ function generatePostsHTML(posts) {
                         </div>
 
                         <!-- BOOTSTRAP EDIT MODAL --!>
-                        <div class="modal fade" id="editModal-${i}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal fade editModal" id="editModal-${i}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                             <!-- BLOG CONTENT W/ SCROLL --!>
                             <div class="modal-dialog  modal-dialog-scrollable">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <input class="titleInput" id="titleInput-${post.id}" value="${post?.title}">
+                                        <p>Edit Blog Post:</p>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
+                                    <input class="titleInput" id="titleInput-${post.id}" value="${post?.title}">
                                     <!-- BOOTSTRAP SELECTOR --!>
                                     <select class="categorySelect" id="editCategory-${post.id}" aria-label="Category Menu">
                                         <option selected>Category Menu</option>
@@ -175,10 +176,10 @@ function generatePostsHTML(posts) {
                                         <option value="5">Web Development</option>
                                     </select>
                                     <div class="modal-body">
-                                        <input id="contentInput-${post.id}" value="${post?.content}">
+                                        <textarea class="contentInput" id="contentInput-${post.id}">${post?.content}</textarea>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-primary savePost" data-id="${post.id}" data-bs-dismiss="modal" aria-label="Save"></button>
+                                        <button type="button" class="btn btn-primary savePost" data-id="${post.id}" data-bs-dismiss="modal" aria-label="Save">Save</button>
                                     </div>
                                 </div>
                             </div>
@@ -297,46 +298,3 @@ function deletePostHandlers() {
         }});
     }
 }
-
-
-// PASSWORD HANDLER PRIOR TO GOOGLE LOGIN
-// export function prepareUserJS() {
-//     doTogglePasswordHandler();
-//     doSavePasswordHandler();
-// }
-// function doSavePasswordHandler() {
-//     const button = document.querySelector("#updatePassword");
-//     button.addEventListener("click", function(event) {
-//         const oldPasswordField = document.querySelector('#oldpassword');
-//         const newPasswordField = document.querySelector('#newpassword');
-//         const confirmPasswordField = document.querySelector('#confirmpassword');
-//         const oldPassword = oldPasswordField.value;
-//         const newPassword = newPasswordField.value;
-//         const confirmPassword = confirmPasswordField.value;
-//         const request = {
-//             method: "PUT",
-//         }
-//         const url = `${BACKEND_HOST}/api/users/${me.id}/updatePassword?oldPassword=${oldPassword}&newPassword=${newPassword}`
-//         fetch(url, request)
-//             .then(function(response) {
-//                 CreateView("/");
-//             });
-//     });
-// }
-// function doTogglePasswordHandler() {
-//     const button = document.querySelector("#toggleShowPassword");
-//     button.addEventListener("click", function(event) {
-//         const oldPassword = document.querySelector("#oldpassword");
-//         const newPassword = document.querySelector("#newpassword");
-//         const confirmPassword = document.querySelector("#confirmpassword");
-//         if(confirmPassword.getAttribute("type") === "password") {
-//             confirmPassword.setAttribute("type", "text");
-//             oldPassword.setAttribute("type", "text");
-//             newPassword.setAttribute("type", "text");
-//         } else {
-//             confirmPassword.setAttribute("type", "password");
-//             oldPassword.setAttribute("type", "password");
-//             newPassword.setAttribute("type", "password");
-//         }
-//     });
-// }

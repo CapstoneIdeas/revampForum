@@ -1,0 +1,111 @@
+#loading {
+	height: 100vh;
+	width: 100%;
+
+	background-color: transparent;
+
+	background-image:
+        linear-gradient(#000,#000),
+        linear-gradient(#000,#000),
+        linear-gradient(#000,#000),
+        linear-gradient(#000,#000),
+        linear-gradient(#000,#000),
+        linear-gradient(#000,#000),
+        linear-gradient(#000,#000);
+
+	background-position:
+        calc(50% - 30px) 50%,
+        calc(50% - 20px) 50%,
+        calc(50% - 10px) 50%,
+        50% 50%,
+        calc(50% + 10px) 50%,
+        calc(50% + 20px) 50%,
+        calc(50% + 30px) 50%;
+
+	background-size:
+        5px 10px,
+        5px 10px,
+        5px 10px,
+        5px 10px,
+        5px 10px,
+        5px 10px,
+        5px 10px;
+	background-repeat: no-repeat;
+
+	animation: l-bars 1s linear infinite alternate;
+}
+#loading.display {
+	visibility: visible;
+}
+@keyframes l-bars {
+	0% {
+		background-size:
+            5px 30px,
+            5px 10px,
+            5px 10px,
+            5px 10px,
+            5px 10px,
+            5px 10px,
+            5px 10px;
+	}
+	16.6% {
+		background-size:
+            5px 10px,
+            5px 40px,
+            5px 10px,
+            5px 10px,
+            5px 10px,
+            5px 10px,
+            5px 10px;
+	}
+	33.2% {
+		background-size:
+            5px 10px,
+            5px 10px,
+            5px 40px,
+            5px 10px,
+            5px 10px,
+            5px 10px,
+            5px 10px;
+	}
+	49.8% {
+		background-size:
+            5px 10px,
+            5px 10px,
+            5px 10px,
+            5px 40px,
+            5px 10px,
+            5px 10px,
+            5px 10px;
+	}
+	66.4% {
+		background-size:
+            5px 10px,
+            5px 10px,
+            5px 10px,
+            5px 10px,
+            5px 40px,
+            5px 10px,
+            5px 10px;
+	}
+	83% {
+		background-size:
+            5px 10px,
+            5px 10px,
+            5px 10px,
+            5px 10px,
+            5px 10px,
+            5px 40px,
+            5px 10px;
+	}
+	100% {
+		background-size:
+            5px 10px,
+            5px 10px,
+            5px 10px,
+            5px 10px,
+            5px 10px,
+            5px 10px,
+            5px 40px;
+	}
+}
