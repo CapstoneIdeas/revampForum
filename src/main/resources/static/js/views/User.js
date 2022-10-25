@@ -226,7 +226,7 @@ function addPostHandler(){
                 headers: getHeaders(),
                 body: JSON.stringify(newPost)
             }
-            fetch("http://localhost:8080/api/posts", request)
+            fetch("${BACKEND_HOST}/api/posts", request)
                 .then(response => {
                     console.log(response.status);
                     CreateView("/user");
@@ -268,7 +268,7 @@ function editPostHandlers() {
                     headers: getHeaders(),
                     body: JSON.stringify(updatedPost)
                 }
-                let url = `http://localhost:8080/api/posts/${editButtons[i].getAttribute("data-id")}`;
+                let url = `${BACKEND_HOST}/api/posts/${editButtons[i].getAttribute("data-id")}`;
                 fetch(url, request).then(request => {
                     location.reload();
                 });
@@ -290,7 +290,7 @@ function deletePostHandlers() {
                 method: "DELETE",
                 headers: getHeaders(),
             }
-            let url = `http://localhost:8080/api/posts/${deleteButtons[i].getAttribute("data-id")}`
+            let url = `${BACKEND_HOST}/api/posts/${deleteButtons[i].getAttribute("data-id")}`
             fetch(url, request).then(response => response.json());
             location.reload();
         }else{
