@@ -103,7 +103,7 @@ main{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    width: 75%;
+    width: 75vw;
     margin-top: 0px;
     margin-bottom:70px;
 }
@@ -111,12 +111,15 @@ main{
     display: inline-block;
 	text-align: center;
     text-transform: uppercase;
-	padding: 12px 20px;
+	padding: 12px 22px;
 	font-family: 'Nunito', sans-serif;
 	font-weight: bold;
 	font-size: 13px;
 	border-radius: 25px;
+    color: whitesmoke;
+    text-shadow: 1px 2px #000;
 }
+
 .filter-btn[data-id="1"]{
     background-color: #ae2012ff;
 	border: 2px solid #ae2012ff;
@@ -145,6 +148,7 @@ main{
     background-color: #ece5da;
     border-style: dotted;
     color: #000;
+    text-shadow: none;
 }
 
 /* BLOG POST LIST */
@@ -177,4 +181,27 @@ main{
     grid-template-columns: 50% 50%;
 	overflow-y: auto;
     /* max-height: ; */
+}
+
+/* MODALS */
+.modal-header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5em 1.5em;
+}
+/* .modal-title{} */
+.modal-body:not(.editModal){
+    padding: 1.5em 1.5em;
+}
+.modal-header > p{
+    text-align: center;
+    margin-bottom: 0;
+    /* margin-left: 5px; */
+    font-size: 22px;
+    font-weight: 500;
+}
+.modal-content{
+    border: transparent;
+    border-radius: 1em;
 }

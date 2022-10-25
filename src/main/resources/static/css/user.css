@@ -8,7 +8,7 @@ body{
 header{
 	font-size: 50px;
 	font-weight: 700;
-	margin-left: 85px;
+	margin-left: 100px;
 	margin-bottom: 75px;
 }
 .userContainer {
@@ -98,7 +98,7 @@ h2 {
 	padding: 0;
 	margin-bottom: 20px;
 }
-label {
+label :not(.radio-toolbar){
 	display: block;
 	margin-bottom: 5px;
     font-family: 'Nunito', sans-serif;
@@ -118,8 +118,22 @@ input, select {
 	-moz-appearance:none;
 	appearance: none;
 }
+.modal-content > input{
+	width: 93%;
+	margin-left: 16px;
+	margin-top: 10px;
+}
+.modal-body > input{
+	height: 250px;
+}
+.modal-content > select{
+	width: 93%;
+	margin-top: 10px;;
+	margin-left: 16px;
+}
 .radio-toolbar {
-	margin: 0px;
+	margin-top: 10px;
+	margin-bottom: 5px;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -141,6 +155,8 @@ input, select {
 	border-radius: 25px;
 	margin-right: 3px;
 	margin-bottom: 5px;
+	color: whitesmoke;
+    text-shadow: 1px 2px #000;
 }
 .radio-toolbar label[for="radioDataScience"] {
 	background-color: #ae2012ff;
@@ -164,15 +180,20 @@ input, select {
 }
 .radio-toolbar label:hover {
 	background-color: #ece5da;
+	color: #000;
+    text-shadow: none;
 }
 .radio-toolbar input[type="radio"]:focus + label{
 	border: 2px dashed rgb(176, 155, 120);
 }
 .radio-toolbar input[type="radio"]:checked + label {
 	background-color: #ece5da;
+	color: #000;
+    text-shadow: none;
 	/* border-color: #4c4; */
 }
 .textarea-div {
+	margin-top: 25px;
 	width: 100%;
 }
 textarea {
@@ -241,6 +262,6 @@ textarea {
 	display: flex;
 	flex-direction: column;
 	overflow-y: auto;
-	min-height: 700px;
+	min-height: 723px;
 }
 

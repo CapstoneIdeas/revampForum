@@ -55,15 +55,7 @@ function generatePostsHTML(posts) {
     if(posts) {
         for (let i = 0; i < posts.length; i++) {
             const post = posts[i];
-        // for (let i = 0; i < posts.length; i++) {
-        //     const post = posts[i];
-        //     let categories = '';
-        //     for (let j = 0; j < post?.categories?.length; j++) {
-        //         if(categories !== "") {
-        //             categories += ", ";
-        //         }
-        //         categories += post.categories[j].name;
-        //     }
+      
         let categoryImg = '../assets/denzel.jpg';
             if(post.category.id === 1){
                 categoryImg = "../assets/data-science.png";
@@ -126,23 +118,20 @@ export function postSetup() {
 }
 
 function search() {
+    
     const divcards = document.querySelectorAll('.blogCard')
-
-
     const searchBar = document.getElementById('searchBar');
     searchBar.addEventListener('keyup', function (event){
+        
         const keylogger = searchBar.value.toLowerCase();
-
-
         divcards.forEach((divcard) => {
+           
             let content = divcard.firstElementChild.nextElementSibling.innerText;
-
             if(content.toLowerCase().match(keylogger)) {
                 divcard.style.display = "flex";
             } else {
                 divcard.style.display = "none";
             }
-
         });
     });
 }
@@ -168,16 +157,3 @@ function filterByCategories() {
         })
     })
 }
-
-// function selectCategoryImg() {
-//     const dataSci = posts.category.id(1)
-//     const genArt = posts.category.id(2)
-//     const language = posts.category.id(3)
-//     const uiuxDesign = posts.category.id(4)
-//     const webDev = posts.category.id(5)
-//     const categoryImg = query
-
-//     if(posts.category.id = 1){
-        
-//     }
-// }

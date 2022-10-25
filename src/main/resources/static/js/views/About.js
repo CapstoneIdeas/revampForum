@@ -21,7 +21,7 @@ export default function About(props) {
                                     <p class="text-blk person-name">Denzel</p>
                                     <p class="text-blk person-info">
                                     <b>Codename:</b> FullSnackDeveloper<br>
-                                    <b>Top Category:</b> <br>
+                                    <b>Top Category:</b> Language<br>
                                     <p>
                                     <div class="card-link-box">
                                         <a href="https://www.linkedin.com/in/denzel-britton/"><img src="../assets/linkedin.png" alt="Denzel's LinkedIn" style="width:30px;height:30px;"></a>
